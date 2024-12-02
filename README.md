@@ -33,6 +33,7 @@ AJ
 
 ### Icons
 - Font Awesome ([fontawesome.io](https://fontawesome.io))
+- HTML5 UP ([([html5up.net/license](https://html5up.net/license))
 
 ### Other
 - jQuery ([jquery.com](https://jquery.com))
