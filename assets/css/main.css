@@ -216,6 +216,7 @@ input, select, textarea {
 		margin: 0 auto;
 		max-width: 100%;
 		width: 1400px;
+		text-align: center; /* Centers the content horizontally */
 	}
 
 		@media screen and (min-width: 961px) and (max-width: 1880px) {
@@ -1755,13 +1756,13 @@ input, select, textarea {
 		}
 
 		.image.avatar48 {
-			width: 72px;
+			width: 60px;
 			height: auto;
 			background: #f00;
 		}
 
 			.image.avatar48 img {
-				width: 72px;
+				width: 60px;
 				height: auto;
 			}
 
@@ -1773,6 +1774,14 @@ input, select, textarea {
 		.image.featured {
 			display: block;
 			width: 100%;
+			margin: 0 0 2em 0;
+		}
+
+				/* Ensure the container around the image uses flexbox */
+		.image.featured1 {
+			display: flex;
+			justify-content: center; /* Centers the content horizontally */
+			align-items: center;     /* Centers the content vertically */
 			margin: 0 0 2em 0;
 		}
 
