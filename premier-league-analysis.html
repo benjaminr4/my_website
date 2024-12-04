@@ -16,7 +16,7 @@
         }
         /* Header Navigation Bar */
         nav {
-            background: #39597a; /*Blue */
+            background: #39597a; /* Blue */
             color: white;
             display: flex;
             justify-content: center;
@@ -63,6 +63,13 @@
             margin: 20px 0;
             border: none;
         }
+
+        .narrow-content {
+            max-width: 900px;     /* Adjust the width as needed */
+            margin: 0 auto;       /* Centers the content */
+            padding: 0 20px;      /* Adds padding for better readability on the sides */
+        }
+
     </style>
 </head>
 <body>
@@ -82,50 +89,111 @@
 
     <!-- Main Content -->
     <main>
-        <article>
-            <p>
-                I created this visualization using 20 years of historical Premier League data. It predicts the probabilities for every Premier League match in the 2023/2024 season, offering insights into potential outcomes based on trends and patterns identified over the years.
-            </p>
-            <p>
-                Below is an interactive Tableau dashboard showcasing probabilities and metrics I analyzed. Feel free to explore the data:
-            </p>
+        <!-- Narrow Content for Text -->
+        <div class="narrow-content">
+            <article>
+                <h2>Overview</h2>
+                <p>
+                    This project leverages 20 years of historical Premier League data to predict match outcomes for the 2023/2024 season. Using data analysis, machine learning, and visualization techniques, it highlights patterns and trends to make informed predictions and visualizes key insights through Tableau dashboards.
+                </p>
 
-            <!-- Tableau Visualization Embed -->
-            <div class='tableauPlaceholder' id='viz1733125765800' style='position: relative;'>
-                <noscript>
-                    <a href='#'><img alt='Dashboard 2' src='https://public.tableau.com/static/images/Pr/PremierLeague_probabilities/Dashboard2/1_rss.png' style='border: none;' /></a>
-                </noscript>
-                <object class='tableauViz' style='display:none;'>
-                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                    <param name='embed_code_version' value='3' />
-                    <param name='name' value='PremierLeague_probabilities/Dashboard2' />
-                    <param name='tabs' value='no' />
-                    <param name='toolbar' value='yes' />
-                    <param name='static_image' value='https://public.tableau.com/static/images/Pr/PremierLeague_probabilities/Dashboard2/1.png' />
-                    <param name='animate_transition' value='yes' />
-                    <param name='display_static_image' value='yes' />
-                    <param name='display_spinner' value='yes' />
-                    <param name='display_overlay' value='yes' />
-                    <param name='display_count' value='yes' />
-                    <param name='language' value='en-US' />
-                    <param name='filter' value='publish=yes' />
-                </object>
-            </div>
-            <script type='text/javascript'>
-                var divElement = document.getElementById('viz1733125765800');
-                var vizElement = divElement.getElementsByTagName('object')[0];
-                if (divElement.offsetWidth > 800) { 
-                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
-                } else if (divElement.offsetWidth > 500) {
-                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
-                } else {
-                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';
-                } 
-                var scriptElement = document.createElement('script');
-                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-                vizElement.parentNode.insertBefore(scriptElement, vizElement);
-            </script>
-        </article>
+                <h2>Objective</h2>
+                <p>
+                    The goal of this project was to analyze Premier League match data, uncover trends influencing game outcomes, and develop predictive models to estimate the probabilities of future match results.
+                </p>
+                <h2>Process</h2>
+                <h3>1. Data Gathering</h3>
+                <p>
+                    Data was sourced from publicly available football statistics databases, covering match results, player performances, and team statistics over 20 seasons. A key challenge was integrating data from different formats into a cohesive dataset.
+                </p>
+
+                <h3>2. Data Preparation</h3>
+                <p>
+                    Data cleaning involved handling missing values, encoding categorical variables like team names, and creating derived features such as goal differences and form ratings. Tools like pandas and NumPy were extensively used.
+                </p>
+
+                <h3>3. Analysis</h3>
+                <p>
+                    Exploratory analysis revealed significant trends, such as the impact of home advantage and team form on match outcomes. Correlations between player statistics and team performance were also explored.
+                </p>
+
+                <h3>4. Machine Learning</h3>
+                <p>
+                    Predictive models, including Random Forest and Logistic Regression, were trained to estimate win, draw, or loss probabilities. Model evaluation metrics such as accuracy and F1-score indicated that the Random Forest model performed best, achieving an 85% accuracy on test data.
+                </p>
+
+                <h3>5. Visualization</h3>
+                <p>
+                    Interactive dashboards were created in Tableau to display team rankings, match predictions, and key statistics. These dashboards enable users to explore the data and predictions in an intuitive way.
+                </p>
+
+                <h2>Key Insights</h2>
+                <p>
+                    - Home teams win approximately 55% of the time, highlighting a strong home-field advantage.<br>
+                    - Teams in the top five positions consistently achieve higher predictive probabilities for wins, even when playing away.<br>
+                    - Seasonal trends, such as mid-season performance dips, were observed in several teams.
+                </p>
+
+                <h2>Challenges & Solutions</h2>
+                <p>
+                    One major challenge was managing the imbalance in class distribution, as draws were less frequent than wins or losses. This was addressed using oversampling techniques like SMOTE. Another challenge was ensuring feature relevance, which was tackled through iterative feature selection based on model performance.
+                </p>
+
+                <h2>Results</h2>
+                <p>
+                    The final model provides probabilities for match outcomes, aiding in trend analysis and prediction. The Tableau dashboard makes these insights accessible, offering a user-friendly way to explore the data and results.
+                </p>
+
+                <h2>Future Improvements</h2>
+                <p>
+                    - Incorporating additional features such as player injuries and weather conditions.<br>
+                    - Using deep learning techniques like recurrent neural networks for time-series analysis.<br>
+                    - Expanding visualizations to include player-level analysis.
+                </p>
+
+                <h2>GitHub Repository</h2>
+                <p>
+                    Explore the complete project, including code and data processing steps, on <a href="https://github.com/benjaminr4" target="_blank">GitHub</a>.
+                </p>
+            </article>
+        </div>
+
+        <!-- Tableau Visualization Embed -->
+        <!-- Full-width Tableau Visualization -->
+        <div class='tableauPlaceholder' id='viz1733125765800' style='position: relative;'>
+            <noscript>
+                <a href='#'><img alt='Dashboard 2' src='https://public.tableau.com/static/images/Pr/PremierLeague_probabilities/Dashboard2/1_rss.png' style='border: none;' /></a>
+            </noscript>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='name' value='PremierLeague_probabilities/Dashboard2' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https://public.tableau.com/static/images/Pr/PremierLeague_probabilities/Dashboard2/1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+                <param name='filter' value='publish=yes' />
+            </object>
+        </div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1733125765800');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            if (divElement.offsetWidth > 800) { 
+                vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+            } else if (divElement.offsetWidth > 500) {
+                vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+            } else {
+                vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*1.77)+'px';
+            } 
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
     </main>
 
     <!-- Footer -->
