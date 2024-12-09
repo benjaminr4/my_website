@@ -70,6 +70,18 @@
             padding: 0 20px;      /* Adds padding for better readability on the sides */
         }
 
+        .image-center {
+            display: flex;
+            justify-content: center; /* Horizontally center the content */
+            margin: 20px 0; /* Add vertical spacing */
+        }
+
+        .image-center img {
+            max-width: 100%; /* Ensures the image is responsive */
+            height: auto; /* Maintains aspect ratio */
+        }
+
+
     </style>
 </head>
 <body>
@@ -94,34 +106,120 @@
             <article>
                 <h2>Overview</h2>
                 <p>
-                    This project leverages 20 years of historical Premier League data to predict match outcomes for the 2023/2024 season. Using data analysis, machine learning, and visualization techniques, it highlights patterns and trends to make informed predictions and visualizes key insights through Tableau dashboards.
+                    This project explores 20 years of historical Premier League data alongside betting market odds. By analyzing patterns in match outcomes and bookmaker predictions, the aim was to determine whether data-driven insights could outperform traditional betting markets. Machine learning techniques were employed to build predictive models that estimate match probabilities, and interactive Tableau dashboards were used to showcase the findings in a visually engaging manner.
                 </p>
-
+                
                 <h2>Objective</h2>
                 <p>
-                    The goal of this project was to analyze Premier League match data, uncover trends influencing game outcomes, and develop predictive models to estimate the probabilities of future match results.
+                    The main objective was to leverage machine learning to predict match results and uncover inefficiencies in betting markets. Specifically, I aimed to:
+                    <ul>
+                        <li>Build accurate predictive models for win, draw, and loss probabilities.</li>
+                        <li>Compare these predictions to betting market odds to identify potential profitability.</li>
+                    </ul>
                 </p>
+                
                 <h2>Process</h2>
                 <h3>1. Data Gathering</h3>
                 <p>
-                    Data was sourced from publicly available football statistics databases, covering match results, player performances, and team statistics over 20 seasons. A key challenge was integrating data from different formats into a cohesive dataset.
+                    The primary dataset was sourced from <a href="https://www.football-data.co.uk" target="_blank">football-data.co.uk</a>, which provided extensive match statistics over 20 seasons. The data included details such as match date, team names, full-time and half-time scores, full-time result, shots, shots on target, corner counts, fouls, yellow cards, and red cards. Additionally, the dataset contained betting odds from various bookmakers like Bet365, Betfair, Ladbrokes, and William Hill, as well as columns for average and maximum odds for each outcome.
                 </p>
-
+                <p>
+                    To enhance the dataset, I incorporated end-of-season results to use as a variable for subsequent seasons. Furthermore, transfer-related data was sourced from <a href="https://www.transfermarkt.com" target="_blank">transfermarkt.com</a>, including player transfers, money spent and received by each team, and new player arrivals. This data allowed me to incorporate transfer window activity as a factor influencing match outcomes.
+                </p>
+               
                 <h3>2. Data Preparation</h3>
                 <p>
-                    Data cleaning involved handling missing values, encoding categorical variables like team names, and creating derived features such as goal differences and form ratings. Tools like pandas and NumPy were extensively used.
+                    Data preparation involved a detailed pipeline to clean, transform, and enhance match-level datasets. The data, sourced from <a href="https://www.football-data.co.uk" target="_blank">football-data.co.uk</a>, required handling column name inconsistencies, standardizing date formats, and removing null rows. The odds, provided by in these datasets required minimal preprocessing apart from standardizing column names across different seasons. All data preparation was performed using pandas.
                 </p>
-
-                <h3>3. Analysis</h3>
                 <p>
-                    Exploratory analysis revealed significant trends, such as the impact of home advantage and team form on match outcomes. Correlations between player statistics and team performance were also explored.
+                    A preprocessing function was designed to process each season's data, comprising 380 matches. Key tasks included:
                 </p>
+                <ul>
+                    <li><strong>One-Hot Encoding:</strong> The FTR column, denoting home win, draw, or away win, was encoded to create target classes.</li>
+                    <li><strong>Splitting Match Data:</strong> The dataset was divided into "home" and "away" subsets, with cumulative statistics for each team calculated. These datasets were merged to create a comprehensive team-level dataset.</li>
+                    <li><strong>Feature Engineering:</strong> Running totals, averages, and recent form metrics (e.g., last three matches) were calculated for key statistics like goals, shots, corners, fouls, and yellow/red cards.</li>
+                    <li><strong>Relative Features:</strong> To capture match dynamics, relative differences between home and away team statistics were computed (e.g., home goals minus away goals).</li>
+                </ul>
+				<p>
+                    Transfer data from <a href="https://www.transfermarkt.com" target="_blank">Transfermarkt</a> contributed valuable financial metrics, including money spent, money received, and player arrivals. Meanwhile, historical team finishing positions were manually gathered from online sources. These finishing positions, from the two seasons prior to the current match season, were normalized to reflect team rankings, with promoted teams assigned a score of zero.
+                </p>
+                <ul>
+                    <li><strong>Promoted Teams:</strong> Promoted teams were assigned a normalized score of zero for the previous seasons, while existing teams received scores based on their relative positions (e.g., 1st place = 20, 20th place = 1).
+                    <li><strong>Transfer Data:</strong> Financial metrics from Transfermarkt (e.g., spending, earnings) were converted from strings to numeric values using a custom parsing function. This data was added after the transfer windows (summer and winter) to reflect roster changes.</li>
+                </ul>
+                
+                    The final dataset integrated match statistics, betting markets, transfer activity, and historical standings, offering a robust foundation for analysis and modeling.
+                </p>
+                
+                
+                <h3>3. Exploratory Analysis</h3>
 
+                <!-- Overall Match Results -->
+                <p>
+                    I began by analyzing the percentage distribution of match outcomes (home wins, draws, and away wins) across all seasons. 
+                    Home wins were the most common result, comprising nearly <strong>46%</strong> of all matches. Draws and away wins followed at <strong>24.2%</strong> and <strong>29.9%</strong>, respectively.
+                </p>
+                <div class="image-center">
+                    <img src="images/PremierLeaguePreds/match_results_overview.png" alt="Pie Chart of Overall Match Results" />
+                </div>
+                
+                <!-- Seasonal Distribution -->
+                <p>
+                    To better understand how match outcomes varied over time, I plotted a stacked bar chart showing the distribution of home wins, draws, and away wins across all 19 seasons. 
+                    An anomaly stood out in the <strong>2020/21 season</strong>, which had more away wins than home wins. 
+                    This irregularity coincided with the COVID-19 pandemic, where matches were largely played without crowds. This suggests that crowd support plays a pivotal role in the home advantage.
+                </p>
+                <div class="image-center">
+                    <img src="images/PremierLeaguePreds/match_results_by_season.png" alt="Stacked Bar Chart of Match Outcomes by Season" />
+                </div>
+                
+                <!-- Betting Market Accuracy -->
+                <p>
+                    I evaluated the accuracy of the betting market's (specifically Bet365's) predictions. 
+                    Overall, the market correctly predicted the match result <strong>55.1%</strong> of the time, with accuracy ranging from <strong>47.4%</strong> to <strong>61.1%</strong> across different seasons.
+                </p>
+                <div class="image-center">
+                    <img src="images/PremierLeaguePreds/betting_accuracy_by_season.png" alt="Bar Chart of Betting Market Accuracy by Season" />
+                </div>
+                
+                <!-- Betting Accuracy and Seasonal Results -->
+                <p>
+                    Next, I explored whether betting market accuracy correlated with the percentage of home wins, draws, and away wins in a season. 
+                    The results revealed:
+                </p>
+                <ul>
+                    <li><strong>Home Wins:</strong> Correlation = 0.49, p-value = 0.034 (Statistically Significant)</li>
+                    <li><strong>Draws:</strong> Correlation = -0.68, p-value = 0.001 (Statistically Significant)</li>
+                    <li><strong>Away Wins:</strong> Correlation = 0.12, p-value = 0.623 (Not Statistically Significant)</li>
+                </ul>
+                
+                <!-- Feature Correlation with Match Outcomes -->
+                <p>
+                    Finally, I analyzed which non-betting based features had the strongest influence on match results (FTR). I did this by seeing what features had the strongest influence on home wins and I assigned scores of 3 for home wins, 2 for draws, and 1 for away wins, 
+                    I identified the following highly correlated features:
+                </p>
+                <ul>
+                    <li><strong>diff.PositionAward:</strong> Teams finishing higher in previous seasons were more likely to win (0.36).</li>
+                    <li><strong>diff.total.shots:</strong> Higher average shots in all games so far in the current season (0.35).</li>
+                    <li><strong>diff.total.win:</strong> Teams with more wins so far this season (0.31).</li>
+                </ul>
+                <p>
+                    Conversely, these features showed the strongest negative correlations:
+                </p>
+                <ul>
+                    <li><strong>diff.total.shots_against:</strong> Teams who are having more shots against them so far this season (0.31).</li>
+                    <li><strong>diff.total.loss:</strong>  Teams who have lost more so far this season (0.29).</li>
+                    <li><strong>diff.total.corners_conceded:</strong> Teams who are conceding more corners (0.28).</li>
+                </ul>
+
+                
                 <h3>4. Machine Learning</h3>
                 <p>
-                    Predictive models, including Random Forest and Logistic Regression, were trained to estimate win, draw, or loss probabilities. Model evaluation metrics such as accuracy and F1-score indicated that the Random Forest model performed best, achieving an 85% accuracy on test data.
+                    I explored various sklearn and PyTorch models. The best-performing models were sklearn's Random Forest and XGBoost's classifier models. I was able to achieve an accuracy over 60%. Most of the predictions were either a win for the home or away team, with draws being a rare prediction. The F1-score for home predictions was 0.71, and for away predictions, it was 0.61. However, it was only 0.07 for draws due to a very low recall value. Below is a confusion matrix illustrating my predictions.
                 </p>
-
+                <!-- Add space for the image -->
+                <img src="images/PremierleaguePreds/Confusion_matrix.png" alt="Confusion Matrix" style="width:100%; max-width:600px; display:block; margin:auto;" />
+                
                 <h3>5. Visualization</h3>
                 <p>
                     Interactive dashboards were created in Tableau to display team rankings, match predictions, and key statistics. These dashboards enable users to explore the data and predictions in an intuitive way.
@@ -136,8 +234,11 @@
 
                 <h2>Challenges & Solutions</h2>
                 <p>
-                    One major challenge was managing the imbalance in class distribution, as draws were less frequent than wins or losses. This was addressed using oversampling techniques like SMOTE. Another challenge was ensuring feature relevance, which was tackled through iterative feature selection based on model performance.
+                    One of the main challenges I faced was narrowing down the feature set. To tackle this, I conducted correlation analysis, performed PCA, and reviewed feature importance scores from the models. While some features contributed minimally, they did not cause overfitting, and I chose to omit them to streamline the model. However, attempts to significantly reduce features often led to declines in model performance rather than improvements. 
+                
+                    Another challenge was the imbalanced data, especially the rarity of draws. I experimented with SMOTE to generate synthetic samples for draw outcomes, which enhanced the model's ability to predict draws but came at the expense of overall accuracy. Moving forward, I plan to improve the dataset by incorporating additional features and gathering more data, as discussed below.
                 </p>
+                              
 
                 <h2>Results</h2>
                 <p>
@@ -145,11 +246,19 @@
                 </p>
 
                 <h2>Future Improvements</h2>
-                <p>
-                    - Incorporating additional features such as player injuries and weather conditions.<br>
-                    - Using deep learning techniques like recurrent neural networks for time-series analysis.<br>
-                    - Expanding visualizations to include player-level analysis.
-                </p>
+                <ul>
+                    <li>Implementing deep learning techniques, such as recurrent neural networks, to enhance time-series analysis.</li>
+                    <li>Integrating player-level data, which could significantly improve model performance but is challenging to obtain. I had access to this data in a previous project with a smaller dataset across various leagues, and it noticeably boosted model accuracy.</li>
+                    <li>Expanding visualizations to include detailed player-level analysis, providing deeper insights into individual contributions.</li>
+                    <li>Collecting more match data, especially focusing on teams that play mid-week in cup competitions. This could reveal whether the added strain of playing more cup matches leads to underperformance due to scheduling conflicts.</li>
+                    <li>Leveraging lower league data to assess whether predictions are more or less difficult in these leagues. I have access to this data, which will make it a manageable task to explore.</li>
+                    <li>Conducting web scraping to gather match previews, which could capture sentiment and provide valuable insights into suspended or injured star players. While some sentiment may already be reflected in betting markets, this additional source could still offer meaningful contributions.</li>
+                    <li>Investigating weather data, as this could be a relevant feature, though I haven't yet found reliable sources online for this information.</li>
+                </ul>
+                <p>I am planning to pursue these improvements as I work towards building a cutting-edge match prediction system.</p>
+                
+
+                
 
                 <h2>GitHub Repository</h2>
                 <p>
