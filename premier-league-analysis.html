@@ -215,12 +215,18 @@
                 
                 <h3>4. Machine Learning</h3>
                 <p>
-                    I explored various sklearn and PyTorch models. The best-performing models were sklearn's Random Forest and XGBoost's classifier models. I was able to achieve an accuracy over 60%. Most of the predictions were either a win for the home or away team, with draws being a rare prediction. The F1-score for home predictions was 0.71, and for away predictions, it was 0.61. However, it was only 0.07 for draws due to a very low recall value. Below is a confusion matrix illustrating my predictions.
+                    I explored various models using sklearn and PyTorch, and the best-performing models were sklearn's Random Forest and XGBoost classifier models. I performed cross-validation on the training dataset to tune the parameters for both models. The best versions of both models achieved an accuracy of over 60% when tested on the test set. XGBoost, in particular, proved to be slightly better, sometimes outperforming Random Forest by about 0.5%.
+                </p>
+                <p>
+                    Ultimately, I achieved an accuracy of 61%. Most predictions were either a win for the home or away team, with draws being a rare outcome. The F1-score for home predictions was 0.71, while for away predictions, it was 0.61. However, the F1-score for draws was only 0.07, primarily due to a very low recall value for draw predictions.
+                </p>
+                <p>
+                    Below is a confusion matrix illustrating the performance of my predictions.
                 </p>
                 <!-- Add space for the image -->
                 <!-- <img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" style="width:100%; max-width:600px; display:block; margin:auto;" /> -->
                 <div class="image-center">
-                    <img src='images/PremierLeaguePreds/Confusion_matrix.png' alt="Confusion Matrix" />
+                    <img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" />
                 </div>
                 
                 <h3>5. Visualization</h3>
