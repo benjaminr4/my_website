@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbucks Offer Analysis</title> 
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header Navigation Bar */
+        nav {
+            background: #39597a;
+            /* Blue */
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: white;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            background: #39597a;
+            /* Blue */
+            color: white;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        iframe,
+        .tableauPlaceholder {
+            max-width: 100%;
+            margin: 20px 0;
+            border: none;
+        }
+
+        .narrow-content {
+            max-width: 900px;
+            /* Adjust the width as needed */
+            margin: 0 auto;
+            /* Centers the content */
+            padding: 0 20px;
+            /* Adds padding for better readability on the sides */
+        }
+
+        .image-center {
+            display: flex;
+            justify-content: center;
+            /* Horizontally center the content */
+            margin: 20px 0;
+            /* Add vertical spacing */
+        }
+
+        .image-center img {
+            max-width: 100%;
+            /* Ensures the image is responsive */
+            height: auto;
+            /* Maintains aspect ratio */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#top">Intro</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Starbucks Offer Analysis</h1> 
+    </header>
+
+    <main>
+        <div class="narrow-content">
+            <article>
+                <h2>Overview</h2>
+                <p>This project explores simulated Starbucks transaction data to predict how customers respond to
+                    different offer types. The goal is to build a model that can identify the most effective offers for
+                    each customer, improving the return on marketing spend and enhancing customer experience. </p>
+
+
+                <h2>Objective</h2>
+                <p>The main objective is to use machine learning to predict whether a customer will respond positively
+                    to an offer. This involves:</p>
+                <ul>
+                    <li>Classifying offers as successful or unsuccessful based on customer behavior.</li>
+                    <li>Building a predictive model to identify the best offer for each customer.</li>
+                    <li>Comparing the performance of different machine learning algorithms, including a neural network.
+                    </li>
+                </ul>
+
+                <h2>Process</h2>
+                <h3>1. Data Gathering</h3>
+                <p>The project uses three simulated datasets provided by Udacity:</p>
+                <ul>
+                    <li><b>portfolio.json:</b> Contains information about the different offers, such as reward,
+                        difficulty, duration, and offer type.</li>
+                    <li><b>profile.json:</b> Contains demographic data for each customer, including gender, age,
+                        income, and membership date.</li>
+                    <li><b>transcript.json:</b> Contains records of transactions, offers received, offers viewed, and
+                        offers completed.</li>
+                </ul>
+
+                <h3>2. Data Exploration and Preparation</h3>
+                <p>The datasets were explored to understand the data distribution, identify patterns, and clean any
+                    inconsistencies. This involved:</p>
+                <ul>
+                    <li>Analyzing the distribution of offer characteristics.</li>
+                    <li>Identifying and handling missing values in customer demographics.</li>
+                    <li>Visualizing the frequency of different events over time.</li>
+                    <li>Analyzing the relationship between offer characteristics and customer response.</li>
+                </ul>
+                <div class="image-center">
+                    <img src="placeholder_image1.png" alt="Placeholder for data exploration image 1"> 
+                </div>
+                <div class="image-center">
+                    <img src="placeholder_image2.png" alt="Placeholder for data exploration image 2">
+                </div>
+
+                <h3>3. Feature Engineering</h3>
+                <p>New features were engineered to improve the model's predictive power. These included:</p>
+                <ul>
+                    <li>Total spending by each customer prior to receiving an offer.</li>
+                    <li>Total number of transactions made by each customer.</li>
+                    <li>Number of previous offers received, viewed, and completed by each customer.</li>
+                </ul>
+
+                <h3>4. Model Building</h3>
+                <p>Two types of models were built and evaluated:</p>
+                <ul>
+                    <li><b>Benchmark Model:</b> A Random Forest Classifier from the sklearn library was chosen as the
+                        benchmark model. GridSearchCV was used to optimize the model's hyperparameters for maximum
+                        recall.</li>
+                    <li><b>Neural Network Model:</b> A linear neural network was built using PyTorch. The network
+                        architecture, loss function, and optimizer were tuned to achieve optimal performance.</li>
+                </ul>
+                <div class="image-center">
+                    <img src="placeholder_image3.png" alt="Placeholder for model building image">
+                </div>
+
+                <h2>Results</h2>
+                <p>Both models were evaluated on a held-out test set (15% of the data). The neural network model slightly
+                    outperformed the benchmark model in terms of recall, accuracy, and F1-score.</p>
+                <div class="image-center">
+                    <img src="placeholder_image4.png" alt="Placeholder for results image"> 
+                </div>
+
+                <h2>Conclusion</h2>
+                <p>This project demonstrated the effectiveness of machine learning in predicting customer response to
+                    marketing offers. The neural network model showed promising results, suggesting that deep learning
+                    techniques can be valuable in this domain.</p>
+
+                <h2>Future Improvements</h2>
+                <p>Potential areas for improvement include:</p>
+                <ul>
+                    <li>Exploring more complex neural network architectures.</li>
+                    <li>Incorporating additional features, such as time lag between offer receipt and view.</li>
+                    <li>Introducing a new class for "very unsuccessful" offers where customers complete an offer without
+                        viewing it.</li>
+                </ul>
+
+                <h2>GitHub Repository</h2>
+                <p>The complete project code and data can be found on <a href="#" target="_blank">GitHub</a>.
+                </p> 
+            </article>
+        </div>
+
+        <footer>
+            <p>Written by Benjamin Redmond | <a href="index.html">Back to Home</a></p>
+        </footer>
+    </main>
+</body>
+</html>
