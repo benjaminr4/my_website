@@ -1,0 +1,193 @@
+       /* General Styling */
+       body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+        padding-top: 55px; /* Match the height of the navigation bar */
+    }
+
+    /* Header Navigation Bar */
+    nav {
+background-color: #2e2e2e; /* Match homepage sidebar background */
+color: white;
+position: fixed; /* Keep it sticky */
+top: 0;
+left: 250px; /* Offset by sidebar width */
+width: calc(100% - 250px); /* Adjust width for sidebar */
+z-index: 999; /* Ensure it stays above content */
+padding: 15px;
+text-align: center; /* Center navigation links */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+nav a {
+color: white;
+margin: 0 20px;
+text-decoration: none;
+font-weight: bold;
+display: inline-block; /* Inline for centering */
+}
+
+nav a:hover {
+color: #f0c040; /* Add hover effect */
+}
+
+header {
+margin-left: 250px; /* Offset by sidebar width */
+padding: 20px;
+background-color: #333; /* Match homepage */
+color: white;
+text-align: center;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+padding: 20px;
+background-color: white;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+}
+
+footer {
+background-color: #2e2e2e; /* Match homepage */
+color: white;
+padding: 15px;
+text-align: center;
+position: relative; /* Keep it aligned */
+margin-top: 20px;
+}
+
+    p {
+        margin: 15px 0;
+    }
+
+    iframe, .tableauPlaceholder {
+        max-width: 100%;
+        margin: 20px 0;
+        border: none;
+    }
+
+    .narrow-content {
+        max-width: 900px;    /* Adjust the width as needed */
+        margin: 0 auto;     /* Centers the content */
+        padding: 0 20px;    /* Adds padding for better readability on the sides */
+    }
+
+    .image-center {
+        display: flex;
+        justify-content: center; /* Horizontally center the content */
+        margin: 20px 0; /* Add vertical spacing */
+    }
+
+    .image-center img {
+        max-width: 100%; /* Ensures the image is responsive */
+        height: auto; /* Maintains aspect ratio */
+    }
+
+
+    /* New Styles for Image and Sidebar */
+    .banner-image {
+        text-align: center;
+        margin-bottom: 20px; /* Add spacing below the image */
+    }
+
+    .banner-image img {
+        max-width: 75%; /* Adjust width percentage as needed */
+        height: auto;
+    }
+
+
+
+    .container {
+margin-left: 250px; /* Match the sidebar width */
+padding: 20px;
+max-width: calc(100% - 250px); /* Fit within remaining space */
+background-color: #f4f4f9; /* Match homepage content background */
+}
+
+.sidebar-header {
+    text-align: center; /* Centers the header content */
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px; /* Adjust this value to position the header lower */
+    margin-bottom: 30px; /* Adds space between the header and the options */
+}
+
+/* Sidebar Title Styling */
+.sidebar-title {
+color: white;
+text-decoration: none;
+font-size: 24px;
+font-weight: bold;
+font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar options adjustments */
+.sidebar {
+position: fixed;
+top: 0;
+left: 0;
+width: 250px;
+height: 100vh;
+background-color: #2e2e2e;
+display: flex;
+flex-direction: column;
+justify-content: flex-start; /* Align items from the top */
+padding: 20px;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensuring vertical centering for the sidebar list items */
+.sidebar ul {
+list-style-type: none;
+padding-left: 40px; /* Add left indentation */
+margin-top: 0; /* Remove margin to prevent excess gap */
+margin-bottom: 0; /* Remove bottom margin */
+flex-grow: 1; /* Allow the list to take up available vertical space */
+}
+
+.sidebar li {
+margin: 10px 0;
+}
+
+.sidebar a {
+color: white;
+text-decoration: none;
+font-size: 16px;
+display: block;
+padding: 5px 0;
+}
+
+.sidebar a:hover {
+color: #f0c040;
+}
+
+
+
+    .content {
+        width: 100%; 
+    }
+
+    @media (max-width: 768px) {
+.sidebar {
+    width: 100%; /* Sidebar takes full width */
+    position: static; /* Not fixed */
+}
+
+nav {
+    left: 0;
+    width: 100%; /* Navigation takes full width */
+}
+
+.container {
+    margin-left: 0; /* Remove sidebar offset */
+    max-width: 100%;
+}
+
+header {
+    margin-left: 0; /* Remove sidebar offset */
+}
+}

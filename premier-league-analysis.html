@@ -4,88 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premier League Analysis</title>
-    <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        /* Header Navigation Bar */
-        nav {
-            background: #39597a; /* Blue */
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: white;
-        }
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-            background: #39597a; /* Blue */
-            color: white;
-        }
-        p {
-            margin: 15px 0;
-        }
-        iframe, .tableauPlaceholder {
-            max-width: 100%;
-            margin: 20px 0;
-            border: none;
-        }
-
-        .narrow-content {
-            max-width: 900px;     /* Adjust the width as needed */
-            margin: 0 auto;       /* Centers the content */
-            padding: 0 20px;      /* Adds padding for better readability on the sides */
-        }
-
-        .image-center {
-            display: flex;
-            justify-content: center; /* Horizontally center the content */
-            margin: 20px 0; /* Add vertical spacing */
-        }
-
-        .image-center img {
-            max-width: 100%; /* Ensures the image is responsive */
-            height: auto; /* Maintains aspect ratio */
-        }
-
-
-    </style>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
+<style>
+        /* Override header background color for the blog post */
+        .blog-header {
+            background-color: #7e2c1a; /* Your desired color */
+        }
+
+</style>
+
+
 <body>
-    <!-- Navigation Bar -->
+
     <nav>
         <a href="index.html">Home</a>
         <a href="index.html#top">Intro</a>
@@ -94,22 +27,45 @@
         <a href="index.html#contact">Contact</a>
     </nav>
 
-    <!-- Page Header -->
-    <header>
+    <header class="blog-header">
         <h1>Premier League Analysis</h1>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Narrow Content for Text -->
-        <div class="narrow-content">
-            <article>
-                <h2>Overview</h2>
+
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <a href="#top" class="sidebar-title">Premier League Analysis</a>
+            </div>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#objective">Objective</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#key-insights">Key Insights</a></li>
+                <li><a href="#challenges">Challenges & Solutions</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#future-improvements">Future Improvements</a></li>
+                <li><a href="#github">GitHub Repository</a></li>
+                <li><a href="#tableau">Tableau Dashboard</a></li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="banner-image">
+                <img src="images/premierleague1.jpeg" alt="Football Image"> 
+            </div>
+
+
+            <div class="content">
+                <div class="narrow-content">
+                    <article>
+                        <h2 id="overview">Overview</h2>
                 <p>
                     This project explores 20 years of historical Premier League data alongside betting market odds. By analyzing patterns in match outcomes and bookmaker predictions, the aim was to determine whether data-driven insights could outperform traditional betting markets. Machine learning techniques were employed to build predictive models that estimate match probabilities, and interactive Tableau dashboards were used to showcase the findings in a visually engaging manner.
                 </p>
                 
-                <h2>Objective</h2>
+                <h2 id="objective">Objective</h2>
                 <p>
                     The main objective was to leverage machine learning to predict match results and uncover inefficiencies in betting markets. Specifically, I aimed to:
                     <ul>
@@ -118,7 +74,7 @@
                     </ul>
                 </p>
                 
-                <h2>Process</h2>
+                <h2 id="process">Process</h2>
                 <h3>1. Data Gathering</h3>
                 <p>
                     The primary dataset was sourced from <a href="https://www.football-data.co.uk" target="_blank">football-data.co.uk</a>, which provided extensive match statistics over 20 seasons. The data included details such as match date, team names, full-time and half-time scores, full-time result, shots, shots on target, corner counts, fouls, yellow cards, and red cards. Additionally, the dataset contained betting odds from various bookmakers like Bet365, Betfair, Ladbrokes, and William Hill, as well as columns for average and maximum odds for each outcome.
@@ -153,6 +109,7 @@
                 
                 
                 <h3>3. Exploratory Analysis</h3>
+                
 
                 <!-- Overall Match Results -->
                 <p>
@@ -213,7 +170,7 @@
                 </ul>
 
                 
-                <h3>4. Machine Learning</h3>
+                <h2 id="machine-learning">Machine Learning</h2>
                 <p>
                     I explored various models using sklearn and PyTorch, and the best-performing models were sklearn's Random Forest and XGBoost classifier models. I performed cross-validation on the training dataset to tune the parameters for both models. The best versions of both models achieved an accuracy of over 60% when tested on the test set. XGBoost, in particular, proved to be slightly better, sometimes outperforming Random Forest by about 0.5%.
                 </p>
@@ -229,19 +186,19 @@
                     <img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" />
                 </div>
                 
-                <h3>5. Visualization</h3>
+                <h2 id="visualization">Visualization</h2>
                 <p>
                     Interactive dashboards were created in Tableau to display team rankings, match predictions, and key statistics. These dashboards enable users to explore the data and predictions in an intuitive way.
                 </p>
 
-                <h2>Key Insights</h2>
+                <h2 id="key-insights">Key Insights</h2>
                 <p>
                     - Home teams win approximately 55% of the time, highlighting a strong home-field advantage.<br>
                     - Teams in the top five positions consistently achieve higher predictive probabilities for wins, even when playing away.<br>
                     - Seasonal trends, such as mid-season performance dips, were observed in several teams.
                 </p>
 
-                <h2>Challenges & Solutions</h2>
+                <h2 id="challenges">Challenges & Solutions</h2>
                 <p>
                     One of the main challenges I faced was narrowing down the feature set. To tackle this, I conducted correlation analysis, performed PCA, and reviewed feature importance scores from the models. While some features contributed minimally, they did not cause overfitting, and I chose to omit them to streamline the model. However, attempts to significantly reduce features often led to declines in model performance rather than improvements. 
                 
@@ -249,7 +206,7 @@
                 </p>
                               
 
-                <h2>Results</h2>
+                <h2 id="results">Results</h2>
                 <p>
                     To evaluate the model's performance in the 2023/2024 Premier League season, a Monte Carlo simulation was conducted. This simulation aimed to assess the statistical significance of the actual profit generated by using the model's predictions to guide betting decisions.
                 </p>
@@ -277,7 +234,7 @@
                     <img src="images/PremierLeaguePreds/MonteCarlo.png" alt="Confusion Matrix" />
                 </div>
 
-                <h2>Future Improvements</h2>
+                <h2 id="future-improvements">Future Improvements</h2>
                 <ul>
                     <li>Implementing deep learning techniques, such as recurrent neural networks, to enhance time-series analysis.</li>
                     <li>Integrating player-level data, which could significantly improve model performance but is challenging to obtain. I had access to this data in a previous project with a smaller dataset across various leagues, and it noticeably boosted model accuracy.</li>
@@ -291,11 +248,22 @@
                 
 
                 
-
-                <h2>GitHub Repository</h2>
+                <h2 id="github">GitHub Repository</h2>
                 <p>
-                    Explore the complete project, including code and data processing steps, on <a href="https://github.com/benjaminr4" target="_blank">GitHub</a>.
+                    Explore the complete project, including code and data processing steps, on <a href="https://github.com/benjaminr4/premier_league_predictions" target="_blank">GitHub</a>.
                 </p>
+                <p>
+                    This project builds on insights gained from my earlier explorations into football analytics. Here are some key takeaways from those projects:
+                </p>
+                <ul>
+                    <li><strong><a href="https://github.com/benjaminr4/premier_league_predictions_messy" target="_blank">premier_league_predictions_messy</a>:</strong> This repository contains the rough work, dead ends, and initial experiments that ultimately led to the refined project presented in this blog post. It primarily serves as a record of my development process, showcasing the various approaches I tried before arriving at the final model. I later created a new GitHub repository (<a href="https://github.com/benjaminr4/premier_league_predictions" target="_blank">premier_league_predictions</a>) to house the cleaned-up and optimized version.</li>
+                    <li><strong><a href="https://github.com/benjaminr4/football_analysis" target="_blank">football_analysis</a>:</strong> In this project, I explored a dataset with more granular data, including player-level statistics. However, the dataset had a smaller sample size in terms of the overall number of matches. This project provided valuable experience working with detailed player data, but highlighted the limitations of having less overall data to do analysis with.</li>
+                </ul>
+                <p>
+                    These earlier experiences have not only informed the development of the more refined and comprehensive model presented in this blog post but have also shaped my vision for the future direction of my football analysis.
+                </p>
+
+                <h2 id="tableau">Tableau</h2>
             </article>
         </div>
 
@@ -336,6 +304,7 @@
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
         </script>
     </main>
+
 
     <!-- Footer -->
     <footer>
