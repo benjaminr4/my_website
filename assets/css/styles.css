@@ -125,45 +125,42 @@ font-weight: bold;
 font-family: 'Arial', sans-serif;
 }
 
-/* Sidebar options adjustments */
+/* Sidebar Positioning */
 .sidebar {
-position: fixed;
-top: 0;
-left: 0;
-width: 250px;
-height: 100vh;
-background-color: #360b0b;
-/* background-color: #2e2e2e; */
-display: flex;
-flex-direction: column;
-justify-content: flex-start; /* Align items from the top */
-padding: 20px;
-box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh; /* Ensure it takes full viewport height */
+    background-color: #26e020; /* Sidebar background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align sidebar items to the top */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Make sure the sidebar stays above other content */
 }
 
-/* Ensuring vertical centering for the sidebar list items */
 .sidebar ul {
-list-style-type: none;
-padding-left: 40px; /* Add left indentation */
-margin-top: 0; /* Remove margin to prevent excess gap */
-margin-bottom: 0; /* Remove bottom margin */
-flex-grow: 1; /* Allow the list to take up available vertical space */
+    list-style-type: none;
+    padding-left: 40px; /* Indentation */
+    margin: 0;
+    flex-grow: 1; /* Allow the list to fill available space */
 }
 
 .sidebar li {
-margin: 10px 0;
+    margin: 10px 0;
 }
 
 .sidebar a {
-color: white;
-text-decoration: none;
-font-size: 16px;
-display: block;
-padding: 5px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 0;
 }
 
 .sidebar a:hover {
-color: #f0c040;
+    color: #f0c040;
 }
 
 
@@ -174,38 +171,39 @@ color: #f0c040;
 
 
 
-    @media (max-width: 768px) {
-        /* Sidebar adjustments for mobile */
-        .sidebar {
-            width: 100%; /* Sidebar takes full width */
-            position: static; /* No longer fixed to the left */
-            top: 0;
-            left: 0; /* Ensure it's right up against the left edge */
-            height: 100vh; /* Full screen height */
-            padding: 20px 0; /* Optional padding for better spacing */
-            box-shadow: none; /* Remove box-shadow on mobile */
-        }
-    
-        /* Content container should take full width too */
-        .container {
-            margin-left: 0; /* Remove offset for mobile */
-            width: 100%; /* Ensure container takes full width */
-        }
-    
-        /* Navigation bar adjustments */
-        nav {
-            left: 0; /* Navigation stays at the top */
-            width: 100%; /* Full-width navigation */
-        }
-    
-        /* Remove header margin-left to align with sidebar */
-        header {
-            margin-left: 0; /* No margin on mobile */
-        }
-    
-        /* Adjust the sidebar header to fit better */
-        .sidebar-header {
-            margin-top: 0; /* Remove extra top margin */
-        }
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    /* Sidebar takes full width and no longer fixed */
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto; /* Adjust height to content */
+        background-color: #801515; /* Ensure it has the correct color */
     }
-    
+
+    .container {
+        margin-left: 0; /* Remove the left margin for mobile */
+        padding: 20px;
+        width: 100%; /* Make sure container takes full width */
+    }
+
+    nav {
+        position: static;
+        width: 100%; /* Full-width navigation */
+        padding: 15px;
+        background-color: #2e2e2e;
+        text-align: center;
+    }
+
+    header {
+        margin-left: 0; /* Remove left margin for header on mobile */
+    }
+
+    .sidebar-header {
+        margin-top: 0; /* Adjust margin for sidebar header */
+    }
+
+    body {
+        padding-top: 55px; /* Add padding to account for the navigation bar */
+    }
+}
