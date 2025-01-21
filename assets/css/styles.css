@@ -128,7 +128,7 @@ font-family: 'Arial', sans-serif;
     left: 0; /* Ensure it stays on the left */
     width: 250px;
     height: 100vh; /* Ensure it covers the full viewport height */
-    background-color: red; /* Temporary color to see changes */
+    background-color: rgb(74, 53, 114); /* Temporary color to see changes */
     z-index: 999; /* Ensure it stays above other content */
 }
 
@@ -164,10 +164,12 @@ color: #f0c040;
 }
 
 @media (max-width: 768px) {
-.sidebar {
-width: 100%; /* Sidebar takes full width */
-position: static; /* Not fixed */
-}
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        position: static; /* Not fixed */
+        margin-top: 0; /* Remove any extra space above */
+        height: auto; /* Stop the sidebar after the content ends */
+    }
 
 nav {
 left: 0;
