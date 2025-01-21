@@ -171,23 +171,33 @@ color: #f0c040;
         width: 100%; 
     }
 
-    @media (max-width: 768px) {
-.sidebar {
-    width: 100%; /* Sidebar takes full width */
-    position: static; /* Not fixed */
-}
 
-nav {
-    left: 0;
-    width: 100%; /* Navigation takes full width */
-}
 
-.container {
-    margin-left: 0; /* Remove sidebar offset */
-    max-width: 100%;
-}
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        position: static; /* No longer fixed to the left */
+        top: 0;
+        left: 0;
+        height: auto; /* Make sure it adjusts to the content */
+    }
 
-header {
-    margin-left: 0; /* Remove sidebar offset */
-}
+    .container {
+        margin-left: 0; /* Remove offset for mobile */
+        width: 100%; /* Make sure container takes full width */
+    }
+
+    nav {
+        left: 0; /* Make sure navigation stays at the top */
+        width: 100%; /* Ensure full-width navigation */
+    }
+
+    header {
+        margin-left: 0; /* Ensure no left margin for header */
+    }
+
+    .sidebar-header {
+        margin-top: 0; /* Adjust top margin to fit better */
+    }
 }
