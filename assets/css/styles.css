@@ -1,128 +1,114 @@
-       /* General Styling */
-       body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f9;
-        color: #333;
-        padding-top: 55px; /* Match the height of the navigation bar */
-    }
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    padding-top: 55px; /* Match the height of the navigation bar */
+}
 
-    /* Header Navigation Bar */
-    nav {
-background-color: #2e2e2e; /* Match homepage sidebar background */
-color: white;
-position: fixed; /* Keep it sticky */
-top: 0;
-left: 250px; /* Offset by sidebar width */
-width: calc(100% - 250px); /* Adjust width for sidebar */
-z-index: 999; /* Ensure it stays above content */
-padding: 15px;
-text-align: center; /* Center navigation links */
-/*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  Optional shadow */
+/* Header Navigation Bar */
+nav {
+    background-color: #2e2e2e;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    z-index: 999;
+    padding: 15px;
+    text-align: center;
 }
 
 nav a {
-color: white;
-margin: 0 20px;
-text-decoration: none;
-font-weight: bold;
-display: inline-block; /* Inline for centering */
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
 }
 
 nav a:hover {
-color: #f0c040; /* Add hover effect */
+    color: #f0c040;
 }
 
 header {
-margin-left: 250px; /* Offset by sidebar width */
-padding: 20px;
-background-color: #333; /* Match homepage */
-color: white;
-text-align: center;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 main {
-padding: 20px;
-background-color: white;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-border-radius: 8px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 footer {
-background-color: #2e2e2e; /* Match homepage */
-color: white;
-padding: 15px;
-text-align: center;
-position: relative; /* Keep it aligned */
-margin-top: 20px;
+    background-color: #2e2e2e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
 }
 
-    p {
-        margin: 15px 0;
-    }
+p {
+    margin: 15px 0;
+}
 
-    iframe, .tableauPlaceholder {
-        max-width: 100%;
-        margin: 20px 0;
-        border: none;
-    }
+iframe, .tableauPlaceholder {
+    max-width: 100%;
+    margin: 20px 0;
+    border: none;
+}
 
-    .narrow-content {
-        max-width: 900px;    /* Adjust the width as needed */
-        margin: 0 auto;     /* Centers the content */
-        padding: 0 20px;    /* Adds padding for better readability on the sides */
-    }
+.narrow-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-    .image-center {
-        display: flex;
-        justify-content: center; /* Horizontally center the content */
-        margin: 20px 0; /* Add vertical spacing */
-    }
+.image-center {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
 
-    .image-center img {
-        max-width: 100%; /* Ensures the image is responsive */
-        height: auto; /* Maintains aspect ratio */
-    }
+.image-center img {
+    max-width: 100%;
+    height: auto;
+}
 
+.banner-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    /* New Styles for Image and Sidebar */
-    .banner-image {
-        text-align: center;
-        margin-bottom: 20px; /* Add spacing below the image */
-    }
+.banner-image img {
+    max-width: 75%;
+    height: auto;
+}
 
-    .banner-image img {
-        max-width: 75%; /* Adjust width percentage as needed */
-        height: auto;
-    }
-
-
-
-    .container {
-margin-left: 250px; /* Match the sidebar width */
-padding: 20px;
-max-width: calc(100% - 250px); /* Fit within remaining space */
-background-color: #f4f4f9; /* Match homepage content background */
+.container {
+    margin-left: 250px;
+    padding: 20px;
+    max-width: calc(100% - 250px);
+    background-color: #f4f4f9;
 }
 
 .sidebar-header {
-    text-align: center; /* Centers the header content */
+    text-align: center;
     font-size: 24px;
     font-weight: bold;
-    margin-top: 40px; /* Adjust this value to position the header lower */
-    margin-bottom: 30px; /* Adds space between the header and the options */
-}
-
-/* Sidebar Title Styling */
-.sidebar-title {
-color: white;
-text-decoration: none;
-font-size: 24px;
-font-weight: bold;
-font-family: 'Arial', sans-serif;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 /* Sidebar Positioning */
@@ -131,21 +117,21 @@ font-family: 'Arial', sans-serif;
     top: 0;
     left: 0;
     width: 250px;
-    height: 100vh; /* Ensure it takes full viewport height */
-    background-color: #4a20e0; /* Sidebar background color */
+    height: 100vh;
+    background-color: #4a20e0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align sidebar items to the top */
+    justify-content: flex-start;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Make sure the sidebar stays above other content */
+    z-index: 1000;
 }
 
 .sidebar ul {
     list-style-type: none;
-    padding-left: 40px; /* Indentation */
+    padding-left: 40px;
     margin: 0;
-    flex-grow: 1; /* Allow the list to fill available space */
+    flex-grow: 1;
 }
 
 .sidebar li {
@@ -163,32 +149,55 @@ font-family: 'Arial', sans-serif;
     color: #f0c040;
 }
 
-
-
-    .content {
-        width: 100%; 
-    }
-
-
+.content {
+    width: 100%;
+}
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+    /* Sidebar takes full width and no longer fixed */
     .sidebar {
-        width: 100%; /* Sidebar takes full width */
-        position: static; /* Not fixed */
+        position: static;
+        width: 100%;
+        height: auto;
+        background-color: #801560;
+        padding: 10px 20px;
+        box-shadow: none;
     }
-    
-    nav {
-        left: 0;
-        width: 100%; /* Navigation takes full width */
-    }
-    
+
+    /* Adjust container to take full width and remove margins */
     .container {
-        margin-left: 0; /* Remove sidebar offset */
-        max-width: 100%;
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
     }
-    
+
+    /* Adjust navigation bar for mobile */
+    nav {
+        position: static;
+        width: 100%;
+        padding: 10px;
+        background-color: #2e2e2e;
+        text-align: center;
+    }
+
+    /* Remove left margin for header on mobile */
     header {
-        margin-left: 0; /* Remove sidebar offset */
+        margin-left: 0;
     }
+
+    /* Adjust sidebar header */
+    .sidebar-header {
+        margin-top: 0;
     }
+
+    /* Ensure the content fills the available width */
+    .content {
+        width: 100%;
+    }
+
+    /* Add padding to narrow-content for better readability on mobile */
+    .narrow-content {
+        padding: 0 10px;
+    }
+}
