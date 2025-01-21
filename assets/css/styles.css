@@ -128,7 +128,7 @@ font-family: 'Arial', sans-serif;
     left: 0; /* Ensure it stays on the left */
     width: 250px;
     height: 100vh; /* Ensure it covers the full viewport height */
-    background-color: rgb(102, 84, 35); /* Temporary color to see changes */
+    background-color: #2e2e2e; /* Temporary color to see changes */
     z-index: 999; /* Ensure it stays above other content */
 }
 
