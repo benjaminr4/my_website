@@ -173,42 +173,22 @@ font-family: 'Arial', sans-serif;
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    /* Sidebar takes full width and no longer fixed */
     .sidebar {
-        position: static;
-        width: 100%;
-        height: auto; /* Adjust height to content */
-        background-color: #152e80; /* Ensure it has the correct color */
-        padding: 10px 20px; /* Reduce padding */
-        box-shadow: none; /* Remove shadow for mobile */
+        width: 100%; /* Sidebar takes full width */
+        position: static; /* Not fixed */
     }
-
-    .container {
-        margin-left: 0; /* Remove the left margin for mobile */
-        padding: 20px;
-        width: 100%; /* Make sure container takes full width */
-    }
-
+    
     nav {
-        position: static;
-        width: 100%; /* Full-width navigation */
-        padding: 10px;
-        background-color: #2e2e2e;
-        text-align: center;
+        left: 0;
+        width: 100%; /* Navigation takes full width */
     }
-
+    
+    .container {
+        margin-left: 0; /* Remove sidebar offset */
+        max-width: 100%;
+    }
+    
     header {
-        margin-left: 0; /* Remove left margin for header on mobile */
+        margin-left: 0; /* Remove sidebar offset */
     }
-
-    .sidebar-header {
-        margin-top: 0; /* Adjust margin for sidebar header */
     }
-
-
-
-        /* Main content styling */
-        .content {
-            width: 100%; /* Ensure it takes up all available space */
-        }
-}
