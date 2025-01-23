@@ -6,15 +6,16 @@
     <title>Premier League Betting</title>
     <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+            /* Override header background color for the blog post */
+            .blog-header {
+                background-color: #36195b; /* Your desired color */
+            }
+
+    </style>
 </head>
 
-<style>
-        /* Override header background color for the blog post */
-        .blog-header {
-            background-color: #7e2c1a; /* Your desired color */
-        }
 
-</style>
 
 
 <body>
@@ -28,7 +29,7 @@
     </nav>
 
     <header class="blog-header">
-        <h1>Premier League Analysis</h1>
+        <h1>Premier League Betting</h1>
     </header>
 
     <main>
@@ -53,7 +54,7 @@
 
         <div class="container">
             <div class="banner-image">
-                <img src="images/premierleague1.jpeg" alt="Football Image"> 
+                <img src="images/PremierLeaguePreds/premier_league_logo.jpg" alt="Football Image"> 
             </div>
 
 
@@ -116,8 +117,10 @@
                     I began by analyzing the percentage distribution of match outcomes (home wins, draws, and away wins) across all seasons. 
                     Home wins were the most common result, comprising nearly <strong>46%</strong> of all matches. Draws and away wins followed at <strong>24.2%</strong> and <strong>29.9%</strong>, respectively.
                 </p>
-                <div class="image-center">
-                    <img src="images/PremierLeaguePreds/match_results_overview.png" alt="Pie Chart of Overall Match Results" />
+                
+                <div style="text-align: center;">
+                    <p><img src="images/PremierLeaguePreds/match_results_overview.png" alt="Pie Chart of Overall Match Results" style="max-width: 100%; height: auto;"></p>
+                    <p style="font-size: smaller;"><strong>Figure 1:</strong> Pie chart showing the overall distribution of match outcomes (home wins, draws, and away wins) across all seasons.</p>
                 </div>
                 
                 <!-- Seasonal Distribution -->
@@ -126,17 +129,19 @@
                     An anomaly stood out in the <strong>2020/21 season</strong>, which had more away wins than home wins. 
                     This irregularity coincided with the COVID-19 pandemic, where matches were largely played without crowds. This suggests that crowd support plays a pivotal role in the home advantage.
                 </p>
-                <div class="image-center">
-                    <img src="images/PremierLeaguePreds/match_results_by_season.png" alt="Stacked Bar Chart of Match Outcomes by Season" />
+                <div style="text-align: center;">
+                    <p><img src="images/PremierLeaguePreds/match_results_by_season.png" alt="Stacked Bar Chart of Match Outcomes by Season" style="max-width: 100%; height: auto;"></p>
+                    <p style="font-size: smaller;"><strong>Figure 2:</strong> Stacked bar chart showing the distribution of match outcomes (home wins, draws, and away wins) across all 19 seasons, highlighting the anomaly in the <strong>2020/21 season</strong>.</p>
                 </div>
-                
+
                 <!-- Betting Market Accuracy -->
                 <p>
                     I evaluated the accuracy of the betting market's (specifically Bet365's) predictions. 
                     Overall, the market correctly predicted the match result <strong>55.1%</strong> of the time, with accuracy ranging from <strong>47.4%</strong> to <strong>61.1%</strong> across different seasons.
                 </p>
-                <div class="image-center">
-                    <img src="images/PremierLeaguePreds/betting_accuracy_by_season.png" alt="Bar Chart of Betting Market Accuracy by Season" />
+                <div style="text-align: center;">
+                    <p><img src="images/PremierLeaguePreds/betting_accuracy_by_season.png" alt="Bar Chart of Betting Market Accuracy by Season" style="max-width: 100%; height: auto;"></p>
+                    <p style="font-size: smaller;"><strong>Figure 3:</strong> Bar chart showing the accuracy of Bet365’s predictions for match outcomes across different seasons.</p>
                 </div>
                 
                 <!-- Betting Accuracy and Seasonal Results -->
@@ -178,13 +183,13 @@
                     Ultimately, I achieved an accuracy of 61%. Most predictions were either a win for the home or away team, with draws being a rare outcome. The F1-score for home predictions was 0.71, while for away predictions, it was 0.61. However, the F1-score for draws was only 0.07, primarily due to a very low recall value for draw predictions.
                 </p>
                 <p>
-                    Below is a confusion matrix illustrating the performance of my predictions.
+                    See Figure 4 for a confusion matrix illustrating the performance of my predictions.
                 </p>
-                <!-- Add space for the image -->
-                <!-- <img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" style="width:100%; max-width:600px; display:block; margin:auto;" /> -->
-                <div class="image-center">
-                    <img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" />
+                <div style="text-align: center;">
+                    <p><img src="images/PremierLeaguePreds/Confusion_matrix.png" alt="Confusion Matrix" style="max-width: 100%; height: auto;"></p>
+                    <p style="font-size: smaller;"><strong>Figure 4:</strong> Confusion matrix showing the performance of the machine learning model predictions.</p>
                 </div>
+
                 
                 <h2 id="visualization">Visualization</h2>
                 <p>
@@ -230,8 +235,9 @@
                 <p>
                     Despite the negative average profit from the simulations, the statistically significant actual profit and the relatively high p-value encourage further investigation and model improvement. Future work will focus on incorporating additional data sources, such as player-level statistics and lower league data, to enhance predictive accuracy and potentially uncover more significant betting edges.
                 </p>
-                <div class="image-center">
-                    <img src="images/PremierLeaguePreds/MonteCarlo.png" alt="Confusion Matrix" />
+                <div style="text-align: center;">
+                    <p><img src="images/PremierLeaguePreds/MonteCarlo.png" alt="Monte Carlo" style="max-width: 100%; height: auto;"></p>
+                    <p style="font-size: smaller;"><strong>Figure 5:</strong> Monte Carlo simulation results showing profit distribution and statistical significance.</p>
                 </div>
 
                 <h2 id="future-improvements">Future Improvements</h2>
@@ -303,6 +309,7 @@
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
         </script>
+        </div>
     </main>
 
 

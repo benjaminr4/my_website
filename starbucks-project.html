@@ -4,102 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Starbucks Offer Analysis</title> 
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        /* General Styling */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
+            /* Override header background color for the blog post */
+            .blog-header {
+                background-color: #00704A; /* Your desired color */
+            }
 
-        /* Header Navigation Bar */
-        nav {
-            background: #39597a;
-            /* Blue */
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: white;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-            background: #39597a;
-            /* Blue */
-            color: white;
-        }
-
-        p {
-            margin: 15px 0;
-        }
-
-        iframe,
-        .tableauPlaceholder {
-            max-width: 100%;
-            margin: 20px 0;
-            border: none;
-        }
-
-        .narrow-content {
-            max-width: 900px;
-            /* Adjust the width as needed */
-            margin: 0 auto;
-            /* Centers the content */
-            padding: 0 20px;
-            /* Adds padding for better readability on the sides */
-        }
-
-        .image-center {
-            display: flex;
-            justify-content: center;
-            /* Horizontally center the content */
-            margin: 20px 0;
-            /* Add vertical spacing */
-        }
-
-        .image-center img {
-            max-width: 100%;
-            /* Ensures the image is responsive */
-            height: auto;
-            /* Maintains aspect ratio */
-        }
     </style>
 </head>
+
 
 <body>
     <nav>
@@ -110,17 +25,41 @@
         <a href="index.html#contact">Contact</a>
     </nav>
 
-    <header>
+    <header class="blog-header">
         <h1>Starbucks Offer Analysis</h1> 
     </header>
 
     <main>
-        <div class="narrow-content">
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <a href="#top" class="sidebar-title">Contents</a>
+            </div>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#objective">Objective</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#Conclusion">Conclusion</a></li>
+                <li><a href="#futureWork">Future Work</a></li>
+                <li><a href="#references">References</a></li>
+                <li><a href="#github">GitHub Repository</a></li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="banner-image">
+                <img src="images/starbucks1.jpeg" alt="Football Image"> 
+            </div>
+
+        <div class="content">    
+            <div class="narrow-content">
             <article>
-                <h2>Overview</h2>
+                <h2 id="overview">Overview</h2>
                     <p>The digital revolution has flooded the advertising world with data, creating both opportunities and challenges for marketers. Inefficient ad spend and irrelevant ads reaching the wrong audience are significant problems that targeted advertising aims to solve. This project explores how machine learning can optimize targeted advertising using simulated customer data from Starbucks, similar to what they might collect from their mobile app.  By analyzing how customers react to different offers, we can build predictive models that uncover hidden patterns in customer behavior. These models can continuously refine marketing efforts and improve the effectiveness of advertising campaigns. In this project, I will compare the performance of traditional machine learning algorithms from the Scikit-Learn library with deep learning neural networks from PyTorch to determine the best approach for predicting customer responses in this context. The ultimate goal is to provide a practical example of how machine learning can help create more effective and efficient targeted advertising.</p>
             
-                    <h2>Objective</h2>
+                    <h2 id="objective">Objective</h2>
                     <p>My primary goal in this project is to use trends within simulated Starbucks transaction data to improve the efficiency of offers sent to customers via the mobile app. I want to identify and send offers that customers are likely to be receptive to, ultimately leading to more purchases and a better return on advertising investment. <br><br>
                     Every few days, Starbucks sends out offers to its mobile app users. These can range from simple drink advertisements to actual deals like discounts or BOGO (Buy One Get One Free). Each offer has a validity period, and customers receive various offers at different times. Some may not receive any offers during certain periods. We also have basic demographic data about the users, along with the time and value of their transactions. Importantly, we can see if a customer viewed an offer – a crucial piece of information, as a purchase might be made without the customer ever seeing the associated offer.<br><br>
                     The central objective is to identify the most appropriate offer for each customer, maximizing the likelihood of them viewing the offer and completing a purchase before it expires. To achieve this, offers will be classified into two categories: successful and unsuccessful.<br><br>
@@ -133,7 +72,7 @@
                             <li>Transaction(s) Completed (meeting the minimum spend/quantity required by the offer)</li>
                         </ol>
 
-                        <p style="text-align: center;"><img src="images/Starbucks/Successful Offer.PNG" alt="Successful discount and BOGO flow" width="600"></p>
+                        <p style="text-align: center;"><img src="images/Starbucks/Successful Offer.PNG" alt="Successful discount and BOGO flow" style="max-width: 100%; height: auto;"></p>
                         <p style="text-align: center; font-size: smaller;"><strong>Figure 1:</strong> Flowchart of a successful discount or BOGO offer. All steps must occur within the offer validity period.</p>
                         <br>
                         <li><b>Informational Offers:</b> A successful informational offer follows this sequence within the offer's validity period:</li>
@@ -143,7 +82,7 @@
                             <li>Transaction Completed</li>
                         </ol>
 
-                        <p style="text-align: center;"><img src="images/Starbucks/Successful Informational Offer.PNG" alt="Successful informational flow" width="600"></p>
+                        <p style="text-align: center;"><img src="images/Starbucks/Successful Informational Offer.PNG" alt="Successful informational flow" style="max-width: 100%; height: auto;"></p>
                         <p style="text-align: center; font-size: smaller;"><strong>Figure 2:</strong> Flowchart of a successful informational offer. All steps must occur within the offer validity period.</p>
                     </ul>
                     <br>
@@ -160,7 +99,7 @@
                     The focus is on maximizing successful offer completions, rather than differentiating between types of unsuccessful offers.<br><br>
                     By building a system that accurately predicts successful offer completions, we can avoid sending irrelevant ads to customers unlikely to engage. This improves the customer experience and makes advertising more efficient and cost-effective. This will be achieved by first cleaning and preparing the data, then building and comparing different machine learning models to find the best approach for this specific challenge.</p>
 
-                    <h2>Analysis</h2>
+                    <h2 id="analysis">Analysis</h2>
 
                     <h3>Datasets Overview</h3>
                     <p>The data sets are provided in JSON files by Udacity. They contain simulated data that mimics Starbucks customer data as briefly touched upon in the previous section. Three files are provided:</p>
@@ -211,37 +150,37 @@
                     <p>I plotted the ages in Figure 3 below and noticed the data looked odd. It showed a large number of ages equal to 118. This is clearly not expected in a real-world scenario. Digging deeper, I found these values occurred in the same rows where gender and income were null. It became apparent that the age value of 118 was used to indicate a missing age. In total, 2,175 rows have these null values, representing nearly 13% of the total rows. After filtering out the null ages and replotting, as shown in Figure 4 below, the data looked much better and exhibited a more realistic age distribution. I believe it makes sense to remove these null values, but I will examine them more closely before making a final decision.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/ages before filter.PNG" alt="Distribution of Customer Ages Before Removing Null Values" width="500"></p>
+                        <p><img src="images/Starbucks/ages before filter.PNG" alt="Distribution of Customer Ages Before Removing Null Values" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 3:</strong> Distribution of customer ages before removing null values. The large spike at 118 represents missing data.</p>
-                        <p><img src="images/Starbucks/ages after filter.PNG" alt="Distribution of Customer Ages After Removing Null Values" width="500"></p>
+                        <p><img src="images/Starbucks/ages after filter.PNG" alt="Distribution of Customer Ages After Removing Null Values" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 4:</strong> Distribution of customer ages after removing null values (age = 118). The distribution appears more realistic after data cleaning.</p>
                     </div>
                 
                     <p>There are significantly more male than female customers in this study, as we can see in Figure 5 below. There are also a few customers who identify as neither male nor female. While this gender imbalance is noticeable, it shouldn't pose an issue for our analysis.</p>
 
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/gender ratio.PNG" alt="Customer Gender Ratio" width="400"></p>
+                        <p><img src="images/Starbucks/gender ratio.PNG" alt="Customer Gender Ratio" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 5:</strong> Pie chart showing the distribution of customer genders in the dataset.</p>
                     </div>
             
                     <p>Next, I examined the income field. The income distribution appeared as expected. I also examined it by gender, as shown in Figure 6 below, to confirm it still appeared as expected. While there are some interesting patterns, nothing indicates bad data. Therefore, I do not need to do any filtering based on income.</p>
             
-                    <div style="text-align: center;">
-                        <p><img src="images/Starbucks/income gender.PNG" alt="Customer Income Distribution by Gender" width="600"></p>
-                        <p style="font-size: smaller;"><strong>Figure 6:</strong> Histograms of customer income, broken down by gender.</p>
-                    </div>
+                    <figure style="text-align: center;">
+                        <img src="images/Starbucks/income gender.PNG" alt="Customer income distribution histogram, broken down by gender, showing the expected income patterns for both male and female customers." style="max-width: 100%; height: auto;">
+                        <figcaption style="font-size: smaller;"><strong>Figure 6:</strong> Histograms of customer income, broken down by gender.</figcaption>
+                    </figure>
             
                     <p>I decided to examine the relationship between age and income. I would expect income to generally trend upwards with age. As you can see in Figure 7 below, the average income is positively correlated with age, although the line is not as smooth as expected. This jagged line further suggests that the sample data generated may not be a perfect real-world example, although the positive correlation indicates it is probably an acceptable replica.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/age to income.PNG" alt="Average Customer Income by Age" width="600"></p>
+                        <p><img src="images/Starbucks/age to income.PNG" alt="Average Customer Income by Age" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 7:</strong> Line graph showing the average customer income by age.</p>
                     </div>
             
                     <p>The field showing when a person first became a customer is heavily skewed towards more recent dates, with a peak in late 2017. This can be seen in Figure 8 below. While this doesn't seem to be an obvious indication of bad data, it does suggest that the sample data generated is not a perfect real-world example.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/Customer Since.PNG" alt="Customer Account Creation Date Distribution" width="600"></p>
+                        <p><img src="images/Starbucks/Customer Since.PNG" alt="Customer Account Creation Date Distribution" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 8:</strong> Histogram showing the distribution of customer account creation dates.</p>
                     </div>
                     
@@ -251,14 +190,14 @@
                     <p>The time column showed that the time span of the data provided is 714 hours, which translates to nearly 30 days. At first, the time information appeared highly unreliable because of huge spikes in the data. But when I broke it down by event, I saw that the spikes were caused by the "offer received" value, as illustrated in Figure 9 below. I noticed the "offer viewed" values peaking around these spikes, as expected, before decaying until the next offer was received. The "offer completed" value has a similar behavior to the "offer viewed," but to a lesser extent. The "transaction" data does appear to have a non-uniform pattern and is perhaps influenced by the offers, but nothing is clear from this initial plot.</p>
                     
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/transcript times.PNG" alt="Event Counts by Time" width="600"></p>
+                        <p><img src="images/Starbucks/transcript times.PNG" alt="Event Counts by Time" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 9:</strong> Histograms showing the distribution of event types over the 30-day period.</p>
                     </div>
             
                     <p>The event breakdown is shown in Figure 10 below. As expected, the number of offers received is greater than the number of offers viewed, which in turn is greater than the number of offers completed. Transactions make up over 45% of the events.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/event ratio.PNG" alt="Event Type Distribution" width="600"></p>
+                        <p><img src="images/Starbucks/event ratio.PNG" alt="Event Type Distribution" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 10:</strong> Pie chart showing the proportion of each event type in the transcript data.</p>
                     </div>
             
@@ -268,7 +207,7 @@
                     <p>As can be seen in Figure 11 below, the 10 offer types first seen in the portfolio dataset are sent out to customers in equal measure. However, the offers are not viewed and completed at an equal rate.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/Offer Ratio.PNG" alt="Offer Ratios by Event Type" width="800"></p>
+                        <p><img src="images/Starbucks/Offer Ratio.PNG" alt="Offer Ratios by Event Type" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 11:</strong> Pie charts showing the proportion of each offer type, broken down by event type (received, viewed, completed).</p>
                     </div>
 
@@ -296,7 +235,7 @@
                     <p>I will use a combination of accuracy, precision, and recall to evaluate the effectiveness of the models. Depending on the balance of the classes, I will decide which metric is a best measurement for this problem. If the classes are imbalanced, then a combination of precision and recall would prove to be a better way of evaluating than accuracy. This can be done by measuring the F1-score, which uses a combination of precision and recall.</p>
                     <p>Often times, even with a balanced class, it is better to optimize recall or precision than to optimize accuracy. False positives and false negatives can have a very high importance in classification problems such as cancer screening or fraud detection. And whilst this problem does not seem as critical as those problems, it is likely that Starbucks would want to optimize the true positives of the successful offers as opposed to minimizing false negatives. Although I will not neglect the false negatives as that could have negative financial connotations, such as wasted advertising or annoying customers such that they do not want to remain a Starbucks customer. So, for those reasons, I will try to optimize recall while also keeping the overall accuracy and F1-score high. I believe an F1-score of around 70% is sufficient.</p>
 
-                    <h2>Methodology</h2>
+                    <h2 id="methodology">Methodology</h2>
 
                     <h3>Data Preprocessing</h3>
 
@@ -314,7 +253,7 @@
                     <p>I decided to do a spot check on an edge case I found to see how my logic was panning out. I could see in Figure 12 below that it was working as expected. I could verify that the transaction at time 414 is correctly associated with the offer received at 336 and not the more recent one received at 408. This is because the the more recent one was never viewed. This offer happens to be a informational offer so I will end up flagging this as positive class since it occurred before it's expiry time. This case gets more interesting still because the transaction at time 414 also triggered an offer completed at 414. This is for the more recent offer that was not viewed. So, this will not be classed as an effective offer. I will eventually be checking if offer completed events occurred before their expiry times and since this event has a null expiry time, I expect to class this in the negative class.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/edge case spot check 1.PNG" alt="Edge case spot check showing an informational offer being correctly prioritised" width="800"></p>
+                        <p><img src="images/Starbucks/edge case spot check 1.PNG" alt="Edge case spot check showing an informational offer being correctly prioritised" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 12:</strong> Example of correctly classified overlapping offers. The informational offer received at time 336 and viewed at time 372 is correctly associated with the transaction at time 414.</p>
                     </div>
 
@@ -349,7 +288,7 @@
                     <p>It is possible that a single transaction can complete two offers at the same time. I can see in the edge case in Figure 13 below that both the discount and BOGO offers that were received were viewed prior to the transaction that completed them. Neither offer had expired so they both got marked as successful. I do not think it makes sense in this instance to infer that it was the latter offer that influenced the customer more than the first. The first offer gave the customer 10 days to spent 20 dollars. Perhaps the customer was always planning on activating that offer within the 10 day period. Or perhaps it was the combination of the two offers that persuaded the customer to go back to start Starbucks and purchase something to complete the pair of offers. It is one of many edge cases in this data. And a different data analyst might make a different call. But I will leave both as successful offers.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/edge case spot check 2.PNG" alt="Edge case spot check showing two offers being completed by a single transaction" width="800"></p>
+                        <p><img src="images/Starbucks/edge case spot check 2.PNG" alt="Edge case spot check showing two offers being completed by a single transaction" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 13:</strong> Example of a single transaction completing two offers simultaneously. Both offers are marked as successful as they were viewed before the transaction and had not expired.</p>
                     </div>
 
@@ -381,7 +320,7 @@
                     <p>After filtering just on offer received I counted the number of positive and negative classes. As can be seen in Figure 14 below, the classes are not perfectly balanced but not too skewed either.</p>
                     
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/offers classes ratio.PNG" alt="Distribution of Offer Classes" width="800"></p>
+                        <p><img src="images/Starbucks/offers classes ratio.PNG" alt="Distribution of Offer Classes" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 14:</strong>  Bar chart showing the number of successful (positive) and unsuccessful (negative) offers after filtering for 'offer received' events. </p>
                     </div>
 
@@ -398,7 +337,7 @@
                     <p>I chose a selection of common sklearn machine learning algorithms to run some initial tests on to see how each one performed. I tested the sklearn models <code>DecisionTreeClassifier</code>, <code>AdaBoostClassifier</code>, <code>RandomForestClassifier</code>, <code>GaussianNB</code>, <code>SVC</code> using my data set. The <code>RandomForestClassifier</code> comfortably outperformed the other models in both the accuracy (0.6976) and successful F1-score (0.6352). The confusion matrix can be seen in Figure 15 below. I decided this will be the sklearn algorithm I will try to optimise and use as my benchmark model against the neural network. The weighted F1-score of this basic model is 0.6958. I would like to keep this figure close to that number while optimising the positive recall value.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/confusion matrix 1.PNG" alt="Confusion Matrix for Initial RandomForestClassifier" width="400"></p>
+                        <p><img src="images/Starbucks/confusion matrix 1.PNG" alt="Confusion Matrix for Initial RandomForestClassifier" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 15:</strong> Confusion matrix for the initial <code>RandomForestClassifier</code> model using default parameters.</p>
                     </div>
             
@@ -406,7 +345,7 @@
                     <p>The first approach I took to refining my model was to explore feature reduction. It is possible that too many features are causing my model to overfit the training data and is therefore weaker at predicting the classes within the testing data. First, I checked the importance of each feature in my <code>RandomForestClassifier</code> model, as can be seen in Figure 16 below. I see that <code>age</code>, <code>income</code>, and <code>became_member_on</code> are the most important features. I also see that <code>social</code> plays a relatively significant part. This tallies with what I found when doing some correlations in the Data Exploration section.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/feature importance.PNG" alt="Feature Importance in RandomForestClassifier" width="700"></p>
+                        <p><img src="images/Starbucks/feature importance.PNG" alt="Feature Importance in RandomForestClassifier" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 16:</strong> Feature importance plot for the initial <code>RandomForestClassifier</code> model.</p>
                     </div>
             
@@ -414,7 +353,7 @@
                     <p>I wondered if this data set would perform better if I performed Principal Component Analysis (PCA) on it. I obtained the eigenvalues and plotted them on a scree plot, as shown in the first image in Figure 17 below. A common method for deciding how many principal components to use is to use all the components before an elbow in a scree plot.<sup><a href="#reference2">[2]</a></sup> These first four components represent 0.78 of the variance, as illustrated in the second image in Figure 17 below.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/PCA plots.PNG" alt="PCA Scree Plot and Explained Variance" width="800"></p>
+                        <p><img src="images/Starbucks/PCA plots.PNG" alt="PCA Scree Plot and Explained Variance" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 17:</strong> Scree plot of eigenvalues and cumulative explained variance for PCA, suggesting the first four principal components capture most of the variance in the data.</p>
                     </div>
                     
@@ -425,14 +364,14 @@
                     <p>I then ran this new data set through the default <code>RandomForestClassifier</code>, and finally, I did begin to see some improvement in my model. Both the accuracy (0.7053) and the F1-score (0.6373) increased slightly. I checked the feature importance of this new data set to see if my new features were prominent, and they did appear to play an important part, as can be seen in Figure 18 below.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/feature importance 2.PNG" alt="Feature Importance with New Features" width="700"></p>
+                        <p><img src="images/Starbucks/feature importance 2.PNG" alt="Feature Importance with New Features" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 18:</strong> Feature importance plot for the <code>RandomForestClassifier</code> model after adding new features.</p>
                     </div>
             
                     <p>But I was still wary of overfitting the data and wanted to try some dimension reduction tactics again. I tried PCA on this new data set, and again, I saw a degradation in its ability to classify. I decided to build a correlation matrix of new features, shown in Figure 19 below. <code>Completed</code>, <code>received</code>, and <code>viewed</code> had the highest total correlations when they were summed across the grid. I felt that I should keep <code>received</code> and eliminate <code>completed</code> and <code>viewed</code>, as <code>received</code> had the highest feature importance of the three.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/Correlation Matrix.PNG" alt="Correlation Matrix of New Features" width="500"></p>
+                        <p><img src="images/Starbucks/Correlation Matrix.PNG" alt="Correlation Matrix of New Features" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 19:</strong> Correlation matrix of the newly engineered features, showing strong correlations between <code>completed</code>, <code>received</code>, and <code>viewed</code>.</p>
                     </div>
             
@@ -440,7 +379,7 @@
                     <p>My final step of refinement was to take this final data set, with the three new features of <code>total_spend</code>, <code>transactions</code>, and <code>received</code>, and apply the <code>GridSearchCV</code> method as before. I found that recall was optimized when just two of the default parameters were changed: <code>max_depth = 20</code> and <code>n_estimators = 300</code>. The recall score was 0.6139, and the overall accuracy was a respectable 0.7151. The confusion matrix for this refined model can be seen in Figure 20 below.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/confusion matrix 2.PNG" alt="Confusion Matrix for Refined Benchmark Model" width="400"></p>
+                        <p><img src="images/Starbucks/confusion matrix 2.PNG" alt="Confusion Matrix for Refined Benchmark Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 20:</strong> Confusion matrix for the refined <code>RandomForestClassifier</code> model using the new features and tuned hyperparameters.</p>
                     </div>
                     
@@ -450,7 +389,7 @@
                     <p>I built a linear network and used 256 hidden layers. I also used the PyTorch Adam optimizer with a learning rate and weight decay of 0.0001. I used a 0.1 dropout factor on each iteration. I also weighted the cross-entropy loss by the number of positive and negative classes in the training set. I then ran the model for 200 epochs to see how it compared to the benchmark model. I saw that the validation model was not improving after about 60 iterations. So, to save time, I decided to just run it for 60 epochs. I avoided the risk of overfitting the training data due to too many epochs by only selecting a model after each iteration if it had a better performance on the validation data and minimized its loss. The accuracy achieved was 0.7148. This is nearly identical my benchmark model. However, the benchmark model was optimized for recall, and this model had a positive recall value of just 0.5398. The confusion matrix for this refined model can be seen in Figure 21 below.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/confusion matrix 3.PNG" alt="Confusion Matrix for Initial Neural Network Model" width="400"></p>
+                        <p><img src="images/Starbucks/confusion matrix 3.PNG" alt="Confusion Matrix for Initial Neural Network Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 21:</strong> Confusion matrix for the initial linear neural network model.</p>
                     </div>
             
@@ -458,12 +397,12 @@
                     <p>I now wanted to refine my model by matching the positive recall score achieved in my benchmark model. I wanted to see if the linear neural network could match that score while also maintaining as good an accuracy score as the benchmark model. To do this, I gave more weight to the cross-entropy for the positive class. I tested a few different weights (I settled on 1.35) until I got a recall score I was satisfied with. The recall score of this model was 0.6326, and the accuracy remained high at 0.7210. The confusion matrix for this refined model can be seen in Figure 22 below.</p>
             
                     <div style="text-align: center;">
-                        <p><img src="images/Starbucks/confusion matrix 4.PNG" alt="Confusion Matrix for Refined Neural Network Model" width="400"></p>
+                        <p><img src="images/Starbucks/confusion matrix 4.PNG" alt="Confusion Matrix for Refined Neural Network Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 22:</strong> Confusion matrix for the refined linear neural network model.</p>
                     </div>
                     
 
-                    <h2>Results</h2>
+                    <h2 id="results">Results</h2>
 
                     <h3>Model Evaluation and Results</h3>
                     <p>Both models were tested on unseen data of the same size (15% of the entire dataset). The models were evaluated using sklearn's metric functions, focusing on achieving a high recall score without significantly sacrificing accuracy or F1-score. I prioritized the recall of the positive class because it measures the proportion of actual successful offers that were correctly identified. This is crucial for Starbucks, as they would be most interested in identifying customers who will respond positively to offers. While sending out ineffective offers that are ignored is a waste of resources, it is arguably less detrimental than missing out on potential sales from customers who would have responded favorably. </p>
@@ -495,20 +434,20 @@
                         </tbody>
                     </table>
                 
-                    <h2>Conclusion</h2>
+                    <h2 id="conclusion">Conclusion</h2>
                 
                     <p>This project explored various avenues within the provided datasets, and there's potential to revisit it with a different objective or angle. The open-ended nature of the project meant that a concrete objective wasn't established until after a thorough data exploration phase. I was particularly surprised and intrigued by the neural network's strong performance in classifying the data. Initially, I expected the benchmark model to perform equally well or even outperform the neural network.</p>
                 
-                    <h3>Final Thoughts</h3>
+                    <h2 id="finalThoughts">Final Thoughts</h3>
                     <p>This project was a challenging yet enjoyable experience. The Udacity tutorials and support from the tutors were invaluable throughout the process. This project has significantly expanded my understanding of data science and machine learning, encouraging me to continue exploring this fascinating field.</p>
                 
-                    <h3>Future Work</h3>
+                    <h2 id="futureWork">Future Work</h3>
                     <p>During the project, several potential avenues for further exploration and improvement emerged. The new features I added, based on past customer behavior, were particularly effective in improving the model's performance. This suggests that further investigation into additional features related to past interactions could yield even better results. For instance, calculating the average time lag between offer receipt and viewing for each customer could provide valuable insights.</p>
                     <p>Another interesting direction would be to introduce a new class to the problem. Currently, the model focuses on classifying offers as "successful" or "unsuccessful," with an emphasis on correctly identifying successful offers (recall). However, a "very unsuccessful" class could be defined to identify offers where a customer completed the offer and received a discount without ever viewing the offer. This scenario represents a potential loss for Starbucks, as they provided a discount unnecessarily. Limiting these "very unsuccessful" offers could be a valuable objective for future model iterations.</p>
                     
                     <p>This is a sentence with a citation.<sup><a href="#reference1">[1]</a></sup></p>
                 
-                    <h2>References</h2>
+                    <h2 id="references">References</h2>
                     <ol>
                         <li id="reference1">Choi, J.-A., & Lim, K. (2020). Identifying Machine Learning Techniques for Classification of Target Advertising. ICT Express, 175–180.</li>
                         <li id="reference2">Chen, Y., Kapralov, M., Canny, J., & Pavlov, D. Y. (2009). Factor Modelling for Advertisement Targeting. Advances in Neural Information Processing System, 324–332.</li>
@@ -516,7 +455,7 @@
                         <li id="reference4">Zhu, M., & Ghodsi, A. (2006). Automatic dimensionality selection from the scree plot via the use of profile likelihood. Computational Statistics & Data Analysis, 918–930.</li>
                     </ol>
                 
-                    <h2>GitHub Repository</h2>
+                    <h2 id="github">GitHub Repository</h2>
                     <p>The complete project code and data can be found on <a href="https://github.com/benjaminr4/starbucks_project" target="_blank">GitHub</a>.</p>
             </article>
         </div>
