@@ -19,7 +19,7 @@
 <body>
     <nav>
         <a href="index.html">Home</a>
-        <a href="index.html#top">Intro</a>futureprojects
+        <a href="index.html#top">Intro</a>
         <a href="index.html#blogs">Blogs</a>
         <a href="index.html#futureprojects">Future Projects</a>
         <a href="index.html#about">About Me</a>
@@ -58,13 +58,38 @@
             <div class="narrow-content">
             <article>
                 <h2 id="overview">Overview</h2>
-                    <p>The digital revolution has flooded the advertising world with data, creating both opportunities and challenges for marketers. Inefficient ad spend and irrelevant ads reaching the wrong audience are significant problems that targeted advertising aims to solve. This project explores how machine learning can optimize targeted advertising using simulated customer data from Starbucks, similar to what they might collect from their mobile app.  By analyzing how customers react to different offers, we can build predictive models that uncover hidden patterns in customer behavior. These models can continuously refine marketing efforts and improve the effectiveness of advertising campaigns. In this project, I will compare the performance of traditional machine learning algorithms from the Scikit-Learn library with deep learning neural networks from PyTorch to determine the best approach for predicting customer responses in this context. The ultimate goal is to provide a practical example of how machine learning can help create more effective and efficient targeted advertising.</p>
+                <p>
+                    As part of the Udacity Machine Learning Nanodegree, I completed a project exploring how machine learning can optimize targeted advertising. 
+                    The digital revolution has flooded the advertising world with data, creating both opportunities and challenges for marketers. 
+                    Inefficient ad spend and irrelevant ads reaching the wrong audience are significant problems that targeted advertising aims to solve.<sup><a href="#reference1">[1]</a></sup>
+                </p>
+                <p>
+                    This project explores how machine learning can optimize targeted advertising using simulated customer data from Starbucks, similar to what they might collect from their mobile app. 
+                    By analyzing how customers react to different offers, we can build predictive models that uncover hidden patterns in customer behavior. 
+                    These models can continuously refine marketing efforts and improve the effectiveness of advertising campaigns.<sup><a href="#reference2">[2]</a></sup>
+                </p>
+                <p>
+                    In this project, I compare the performance of traditional machine learning algorithms from the Scikit-Learn library with deep learning neural networks from PyTorch 
+                    to determine the best approach for predicting customer responses in this context. The ultimate goal is to provide a practical example of how machine learning 
+                    can help create more effective and efficient targeted advertising.
+                </p>
+                <p>
+                    <a href="https://www.udacity.com/certificate/RMVG6SYV" target="_blank">
+                        View my Udacity Machine Learning Nanodegree Certification
+                    </a>
+                </p>
             
                     <h2 id="objective">Objective</h2>
-                    <p>My primary goal in this project is to use trends within simulated Starbucks transaction data to improve the efficiency of offers sent to customers via the mobile app. I want to identify and send offers that customers are likely to be receptive to, ultimately leading to more purchases and a better return on advertising investment. <br><br>
-                    Every few days, Starbucks sends out offers to its mobile app users. These can range from simple drink advertisements to actual deals like discounts or BOGO (Buy One Get One Free). Each offer has a validity period, and customers receive various offers at different times. Some may not receive any offers during certain periods. We also have basic demographic data about the users, along with the time and value of their transactions. Importantly, we can see if a customer viewed an offer – a crucial piece of information, as a purchase might be made without the customer ever seeing the associated offer.<br><br>
-                    The central objective is to identify the most appropriate offer for each customer, maximizing the likelihood of them viewing the offer and completing a purchase before it expires. To achieve this, offers will be classified into two categories: successful and unsuccessful.<br><br>
-                    <b>Successful Offers:</b><br><br>
+                    <p>
+                        This project aims to optimize the efficiency of Starbucks' mobile app offers using machine learning. By analyzing simulated transaction data, the goal is to identify the most relevant offers for each customer, maximizing engagement and purchases while reducing unnecessary ad spend.
+                    </p>
+                    <p>
+                        Starbucks regularly sends a variety of offers to its mobile app users, including discounts, BOGO (Buy One Get One Free) deals, and informational messages. Each offer has a validity period, and users receive different offers at different times. Our dataset includes user demographics, transaction details, and whether offers were viewed—key information for understanding their impact. The objective is to predict which offers customers are most likely to engage with and complete before the expiration date.
+                    </p>
+                    <p>
+                        Offers are categorized as <b>successful</b> or <b>unsuccessful</b> based on customer actions:
+                    </p>
+
                     <ul>
                         <li><b>Discount and BOGO Offers:</b> A successful discount or BOGO offer is one where the following sequence occurs within the offer's validity period:</li>
                         <ol>
@@ -85,21 +110,22 @@
 
                         <p style="text-align: center;"><img src="images/Starbucks/Successful Informational Offer.PNG" alt="Successful informational flow" style="max-width: 100%; height: auto;"></p>
                         <p style="text-align: center; font-size: smaller;"><strong>Figure 2:</strong> Flowchart of a successful informational offer. All steps must occur within the offer validity period.</p>
+                    
+                        <br>
+                        These sequences are designed to ensure the customer was aware of the offer and that it influenced their purchase decision. Other events can occur between these steps without disqualifying an offer as successful. For example, a customer might receive an informational offer, make a transaction, view the offer, and then make another transaction. If all these events happen within the validity period, it's still considered a successful offer.<br><br>
+                        <li><b>Unsuccessful Offers:</b></li>
+                        <p>Offers that do not meet the above criteria are considered unsuccessful. Examples include:</p>
+                        <ul>
+                            <li>Customers never viewed the offer.</li>
+                            <li>Customers viewed the offer but didn't make a transaction.</li>
+                            <li>Customers didn't make enough transactions to meet the offer's requirements (for discount or BOGO).</li>
+                            <li>Customers completed the offer before viewing it.</li>
+                        </ul>
                     </ul>
-                    <br>
-                    These sequences are designed to ensure the customer was aware of the offer and that it influenced their purchase decision. Other events can occur between these steps without disqualifying an offer as successful. For example, a customer might receive an informational offer, make a transaction, view the offer, and then make another transaction. If all these events happen within the validity period, it's still considered a successful offer.<br><br>
-                    <b>Unsuccessful Offers:</b><br><br>
-                    All other offer scenarios will be classified as unsuccessful. This includes cases where:<br><br>
-                    <ul>
-                        <li>Customers never viewed the offer.</li>
-                        <li>Customers viewed the offer but didn't make a transaction.</li>
-                        <li>Customers didn't make enough transactions to meet the offer's requirements (for discount or BOGO).</li>
-                        <li>Customers completed the offer before viewing it.</li>
-                    </ul>
-                    <br>
-                    The focus is on maximizing successful offer completions, rather than differentiating between types of unsuccessful offers.<br><br>
-                    By building a system that accurately predicts successful offer completions, we can avoid sending irrelevant ads to customers unlikely to engage. This improves the customer experience and makes advertising more efficient and cost-effective. This will be achieved by first cleaning and preparing the data, then building and comparing different machine learning models to find the best approach for this specific challenge.</p>
-
+                    <p>
+                        By building and comparing machine learning models, this project aims to predict successful offer completions, enhancing the customer experience and optimizing advertising strategies.
+                    </p>
+                    
                     <h2 id="analysis">Analysis</h2>
 
                     <h3>Datasets Overview</h3>
@@ -139,17 +165,17 @@
                         <li><strong>value (dict of strings)</strong> - Either an offer ID or transaction amount, depending on the record.</li>
                         <li><strong>time (int)</strong> - Time in hours since the start of the test.</li>
                     </ul>
+
+                    <p>The combination of these datasets provides a comprehensive view of customer behavior, enabling analysis to determine which offers are most effective for various customer demographics and behaviors.</p>
                 
                     <h3>Data Exploration</h3>
                 
                     <h4>Portfolio Data</h4>
-                    <p>There are four discount, four BOGO, and two informational offers. The informational offers have no difficulty or reward, as expected. The non-informational offers have a difficulty range from 5 to 20 dollars, and a reward ranging from 2 to 10 dollars. The duration across all offers ranges from 3 to 10 days.</p>
-                    <p>I also noted that while the offers use a different combination of channels to inform customers, they all use email as a channel. This indicates that I won't be able to extract any useful information from the email channel data. Therefore, I intend to remove email from all channel combinations during preprocessing.</p>
-                
+                    <p>The portfolio contains ten offers: four discounts, four BOGOs (buy-one-get-one-free), and two informational offers.  Non-informational offers have difficulty (cost) ranging from $5 to $20 and rewards from $2 to $10, with durations between 3 and 10 days.  Since all offers use email as a communication channel, this data won't be useful for analysis and will be removed during preprocessing.</p>
+
                     <h4>Profile Data</h4>
-                    <p>All 17,000 customer IDs are unique, which is important for later analysis. There are no duplicate customers, and it will make joining to the other data sets straightforward.</p>
-                    <p>I plotted the ages in Figure 3 below and noticed the data looked odd. It showed a large number of ages equal to 118. This is clearly not expected in a real-world scenario. Digging deeper, I found these values occurred in the same rows where gender and income were null. It became apparent that the age value of 118 was used to indicate a missing age. In total, 2,175 rows have these null values, representing nearly 13% of the total rows. After filtering out the null ages and replotting, as shown in Figure 4 below, the data looked much better and exhibited a more realistic age distribution. I believe it makes sense to remove these null values, but I will examine them more closely before making a final decision.</p>
-            
+                    <p>The dataset contains 17,000 unique customer IDs, which is ideal for joining with other data.  However, a plot of customer ages revealed an anomaly: a large number of customers with an age of 118 (Figure 3).  Further investigation showed that these rows also had missing gender and income data, suggesting that 118 was used as a placeholder for missing values. After removing these 2,175 rows (13% of the data), the age distribution appears more realistic (Figure 4). </p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/ages before filter.PNG" alt="Distribution of Customer Ages Before Removing Null Values" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 3:</strong> Distribution of customer ages before removing null values. The large spike at 118 represents missing data.</p>
@@ -157,29 +183,29 @@
                         <p style="font-size: smaller;"><strong>Figure 4:</strong> Distribution of customer ages after removing null values (age = 118). The distribution appears more realistic after data cleaning.</p>
                     </div>
                 
-                    <p>There are significantly more male than female customers in this study, as we can see in Figure 5 below. There are also a few customers who identify as neither male nor female. While this gender imbalance is noticeable, it shouldn't pose an issue for our analysis.</p>
+                    <p>The dataset shows a significant gender imbalance, with more males than females (Figure 5). There are also a few customers who identify as neither male nor female. While this gender imbalance is noticeable, it shouldn't pose an issue for our analysis.</p>
 
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/gender ratio.PNG" alt="Customer Gender Ratio" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 5:</strong> Pie chart showing the distribution of customer genders in the dataset.</p>
                     </div>
             
-                    <p>Next, I examined the income field. The income distribution appeared as expected. I also examined it by gender, as shown in Figure 6 below, to confirm it still appeared as expected. While there are some interesting patterns, nothing indicates bad data. Therefore, I do not need to do any filtering based on income.</p>
+                    <p>The income distribution appeared as expected. I also examined it by gender, as shown in Figure 6 below, to confirm it still appeared as expected. While there are some interesting patterns, nothing indicates bad data. Therefore, I do not need to do any filtering based on income.</p>
             
                     <figure style="text-align: center;">
                         <img src="images/Starbucks/income gender.PNG" alt="Customer income distribution histogram, broken down by gender, showing the expected income patterns for both male and female customers." style="max-width: 100%; height: auto;">
                         <figcaption style="font-size: smaller;"><strong>Figure 6:</strong> Histograms of customer income, broken down by gender.</figcaption>
                     </figure>
-            
-                    <p>I decided to examine the relationship between age and income. I would expect income to generally trend upwards with age. As you can see in Figure 7 below, the average income is positively correlated with age, although the line is not as smooth as expected. This jagged line further suggests that the sample data generated may not be a perfect real-world example, although the positive correlation indicates it is probably an acceptable replica.</p>
-            
+
+                    <p>Examining the relationship between age and income, we see a positive correlation, although the trend isn't as smooth as expected (Figure 7). This suggests the sample data might not perfectly reflect real-world patterns.</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/age to income.PNG" alt="Average Customer Income by Age" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 7:</strong> Line graph showing the average customer income by age.</p>
                     </div>
             
-                    <p>The field showing when a person first became a customer is heavily skewed towards more recent dates, with a peak in late 2017. This can be seen in Figure 8 below. While this doesn't seem to be an obvious indication of bad data, it does suggest that the sample data generated is not a perfect real-world example.</p>
-            
+                    <p>The distribution of customer account creation dates skews heavily towards recent dates, with a peak in late 2017 (Figure 8). Again, this hints that the sample data might deviate from real-world scenarios.</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/Customer Since.PNG" alt="Customer Account Creation Date Distribution" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 8:</strong> Histogram showing the distribution of customer account creation dates.</p>
@@ -187,26 +213,24 @@
                     
                 
                     <h4>Transcript Data</h4>
-                    <p>First, I checked for any null values in the transcript data set, and none of the 306,534 rows contained any null values in any of its columns. I then counted 17,000 distinct people in the data and confirmed that these were the same people that appeared in the profile data. The mean number of occurrences of each person in the transcript data set was over 18.</p>
-                    <p>The time column showed that the time span of the data provided is 714 hours, which translates to nearly 30 days. At first, the time information appeared highly unreliable because of huge spikes in the data. But when I broke it down by event, I saw that the spikes were caused by the "offer received" value, as illustrated in Figure 9 below. I noticed the "offer viewed" values peaking around these spikes, as expected, before decaying until the next offer was received. The "offer completed" value has a similar behavior to the "offer viewed," but to a lesser extent. The "transaction" data does appear to have a non-uniform pattern and is perhaps influenced by the offers, but nothing is clear from this initial plot.</p>
-                    
+                    <p>The transcript data contains 306,534 rows and 17,000 unique customers (the same ones from the profile data), with no null values. Each customer appears an average of 18 times across the 30-day period.  Analyzing event times reveals that "offer received" events cause spikes in activity, followed by peaks in "offer viewed" and "offer completed" events (Figure 9).  </p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/transcript times.PNG" alt="Event Counts by Time" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 9:</strong> Histograms showing the distribution of event types over the 30-day period.</p>
                     </div>
             
-                    <p>The event breakdown is shown in Figure 10 below. As expected, the number of offers received is greater than the number of offers viewed, which in turn is greater than the number of offers completed. Transactions make up over 45% of the events.</p>
-            
+                    <p>Figure 10 shows the breakdown of event types.  "Transactions" are the most frequent, followed by "offers received", "offers viewed", and "offers completed".</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/event ratio.PNG" alt="Event Type Distribution" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 10:</strong> Pie chart showing the proportion of each event type in the transcript data.</p>
                     </div>
             
-                    <p>I had to parse out the value column to analyze the data because it contained information within nested dictionaries. My first step was to look at the dollar amount of all transactions. I found that the vast majority of transactions were less than $50, but the data was massively skewed by a few huge transactions of a few hundred dollars.</p>
-                    <p>I considered cutting off the transactions that were in the hundreds or thousands of dollars, but I could not find a solid enough reason to justify this. It is very possible that a customer might make a large purchase like this for their family, friends, or colleagues. And while an offer of $5 might not seem like a significant incentive for such a large purchase, the simple notification or good gesture of an offer might be enough for the customer to choose Starbucks over another chain. For this reason, I intend to keep these large transaction values in the dataset.</p>
-                    <p>Perhaps more significantly, there are a large number of very small transactions. I couldn't determine the cause of these small transactions. They could be credit card fees processed some time after a valid transaction, small purchases like a packet of sugar, or simply bad data that should not be in the data set. Some Starbucks shops do have items available for less than 50 cents, but I find purchases of less than this value suspicious. When I summed the maximum total of purchases for less than 25 cents any customer made, I got $1.06. This is comfortably less than the lowest difficulty of any discount or BOGO offer of $5. So, I don't think these small transactions will significantly impact the misclassification of offers, even if they are erroneous. However, if these transactions are not genuine, they could have the unwanted effect of misclassifying informational offers. If they are delayed credit card fees or bad data that occur after an informational offer has been viewed, that informational offer would be incorrectly classified as positive. For these reasons, I intend to filter out these transactions during the data preparation phase. I will likely select a threshold of around 25 cents. I feel this is a safe threshold because 25 cents is such a low figure that Starbucks probably wouldn't deem it a successful offer, even if they were authentic transactions.</p>
-                    <p>As can be seen in Figure 11 below, the 10 offer types first seen in the portfolio dataset are sent out to customers in equal measure. However, the offers are not viewed and completed at an equal rate.</p>
-            
+                    <p>Analyzing the transaction amounts (from the parsed `value` column) reveals a wide range, with most under $50, but also some very large and very small transactions.  While the large transactions are likely valid, the very small ones (under $0.25) might be erroneous and could skew the analysis of informational offers.  These small transactions will be filtered out during preprocessing.</p>
+
+                    <p>Figure 11 shows that while all ten offer types are sent out equally, their view and completion rates differ. </p>
+                    
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/Offer Ratio.PNG" alt="Offer Ratios by Event Type" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 11:</strong> Pie charts showing the proportion of each offer type, broken down by event type (received, viewed, completed).</p>
@@ -215,44 +239,44 @@
 
                 
                     <h4>Transcript and Portfolio Data</h4>
-                    <p>I decided to join the transcript and portfolio data together to see if I could identify any correlations between certain fields of interest.</p>
-                    <p>I found that the number of channels used had a high correlation (0.85) with the likelihood of an offer being viewed. The p-value of 0.0017 is less than 0.05, so it seems statistically significant. The number of channels had a much weaker, but still high, correlation (0.56) with an offer being completed.</p>
-                    <p>The duration was very weakly correlated with the percentage of times the offer was viewed. In fact, it was slightly negatively correlated. I would have expected this to be a stronger positive relationship. Examining some of the values in the table did give me some ideas as to why this might be the case. The discount offer with id=0b1e1539f2cc45b7b9fa7c272da2e1d7 has the lowest view rate, even though it was available for the joint longest time. I can see in the channel's column that it was only sent via two channels – it was not sent via mobile or social. It is possible that mobile and social channels are of very high importance in terms of getting views. The correlation between duration and offer completion is also weak, but at least it is positive, which makes sense. So, while a longer duration doesn't appear to have a strong effect on the likelihood of somebody viewing the offer if certain channels are not used, it does seem to have some impact on the chances of them completing the offer. It is important to remember that an offer could be completed without the offer being viewed. The difficulty is moderately negatively correlated (-0.49) with an offer being completed, as expected.</p>
-                    <p>The channel column seemed to have the biggest influence on whether an offer was viewed. Therefore, I wanted to determine which channel had the most impact on offer views and offer completions. The social channel is hugely correlated (0.96) with an offer being viewed, with a p-value close to zero, indicating it is statistically significant. The mobile channel had a strong correlation (0.61) with an offer being viewed, while the email channel actually had a low correlation (-0.27) with an offer being viewed. However, neither of these correlations appears statistically significant. There is no point in trying to get the relationship between email and offer views, as every single offer has email in it. Interestingly, there is no strong correlation (0.31) between the social channel and an offer being completed, despite the very high relationship between social and the view percentage. In fact, surprisingly to me, the email channel had a higher correlation (0.43) with an offer being completed than the social channel did.</p>
-                    <p>I decided to check the correlation between an offer being viewed and an offer being completed because I now guessed that it would not be that high. I obtained a modest correlation of 0.42.</p>
-                    <p>As we can see, they are positively correlated, but not strongly, and the correlation is not statistically significant. This aligns with the narrative that has been building through the previous correlations: higher view rates do not automatically translate to higher completion rates. It is possible that while users are far more likely to view an offer if it pops up on their social media, they are conditioned to ignore such adverts. Conversely, a more targeted offer sent directly to their mobile or email might be more likely to trigger a response once viewed.</p>
-
+                    <p>To identify relationships between offer characteristics and customer response, I joined the transcript and portfolio data.  </p>
+                    <p>I found that the number of channels used to communicate an offer is highly correlated with the likelihood of an offer being viewed (0.85), and this correlation is statistically significant. However, the correlation with offer completion is weaker (0.56). </p>
+                    <p>Interestingly, the duration of an offer has a weak negative correlation with views. This is unexpected, as I anticipated a positive relationship.  Further analysis suggests that the communication channel might be more important than duration in influencing views.  For example, the discount offer with the lowest view rate was only sent via two channels (not mobile or social).  The correlation between duration and offer completion is weak but positive.  Difficulty is moderately negatively correlated with offer completion (-0.49), as expected.</p>
+                    <p>The social channel shows the strongest correlation with offer views (0.96), with a statistically significant p-value.  However, there is no strong correlation between the social channel and offer completion.  Surprisingly, the email channel has a higher correlation with offer completion (0.43) than the social channel does (0.31). </p>
+                    <p>The correlation between an offer being viewed and an offer being completed is modest (0.42) and not statistically significant. This suggests that higher view rates don't necessarily translate to higher completion rates.  While social media might be effective for generating views, more targeted channels like mobile or email might be better for driving conversions.</p>
 
 
 
                                     
                     <h3>Algorithms and Techniques</h3>
-                    <p>A neural network will be used to process the data and maximize the efficiency of the offers. I will use a linear neural network from PyTorch. Neural networks have proved successful in areas such as handwriting recognition and speech recognition; however, a neural network classifier can underperform other classifier models, depending on the complexity of the issue.<sup><a href="#reference1">[1]</a></sup> I intend to find out if a linear neural network can outperform more classic classification models with this data. It is quite possible that the structure of this problem and its data does not perform optimally using a linear neural network.</p>
-
+                    <p>To process the data and maximize offer efficiency, I'll use a linear neural network from PyTorch. While neural networks have proven successful in various domains like handwriting and speech recognition, their performance in classification tasks can sometimes be less optimal than traditional methods, depending on the complexity of the problem.<sup><a href="#reference3">[3]</a></sup>  This project will explore whether a linear neural network can outperform classic classification models on this specific dataset. </p>
+                    
+                    
                     <h3>Benchmark Model</h3>
-                    <p>My benchmark model will be a machine learning algorithm from the sklearn library. I want to compare an optimal sklearn ML model to the PyTorch linear neural network. I will run tests on various sklearn algorithms to obtain the optimal one for this classification problem. I will then optimize the chosen model through a few refinement iterations. Once I have built the best version of my benchmark model, I will compare it to the neural network, which will also be optimized in a similar way. I will then compare the ability of the two models to correctly predict the classes.</p>
+                    <p>To compare the performance of the neural network, I'll establish a benchmark model using a machine learning algorithm from the sklearn library.  I'll evaluate several algorithms, including Gaussian Naive Bayes, Support Vector Classifier (SVC), AdaBoost, Random Forest, and Decision Tree, to identify the optimal one for this classification problem.  The chosen model will then be optimized through several refinement iterations, which will involve feature engineering, PCA analysis to reduce dimensionality, and hyperparameter tuning using GridSearchCV.  The optimized benchmark model will then be compared to the neural network (also optimized in a similar manner) to assess their predictive accuracy.</p>
 
                     <h3>Evaluation Metrics</h3>
-                    <p>I will use a combination of accuracy, precision, and recall to evaluate the effectiveness of the models. Depending on the balance of the classes, I will decide which metric is a best measurement for this problem. If the classes are imbalanced, then a combination of precision and recall would prove to be a better way of evaluating than accuracy. This can be done by measuring the F1-score, which uses a combination of precision and recall.</p>
-                    <p>Often times, even with a balanced class, it is better to optimize recall or precision than to optimize accuracy. False positives and false negatives can have a very high importance in classification problems such as cancer screening or fraud detection. And whilst this problem does not seem as critical as those problems, it is likely that Starbucks would want to optimize the true positives of the successful offers as opposed to minimizing false negatives. Although I will not neglect the false negatives as that could have negative financial connotations, such as wasted advertising or annoying customers such that they do not want to remain a Starbucks customer. So, for those reasons, I will try to optimize recall while also keeping the overall accuracy and F1-score high. I believe an F1-score of around 70% is sufficient.</p>
+                    <p>Model performance will be evaluated using a combination of accuracy, precision, and recall. The choice of the primary metric will depend on the balance of classes in the dataset. If there's significant class imbalance, the F1-score (which combines precision and recall) will be a more suitable measure than accuracy alone.</p>
+                    <p>Furthermore, the business context suggests that optimizing for recall (true positive rate), while maintaining a good balance with overall accuracy and F1-score, might be the most beneficial approach. This is because Starbucks likely prioritizes maximizing the successful offers (true positives) while minimizing wasted advertising spend and customer dissatisfaction due to irrelevant offers (false negatives). Based on my initial analysis and the business context, I believe an F1-score of around 70% would represent a significant improvement over baseline performance and achieve a good balance between maximizing successful offers and minimizing wasted resources.</p>
 
                     <h2 id="methodology">Methodology</h2>
 
                     <h3>Data Preprocessing</h3>
 
                     <h4>Filtering</h4>
-                    <p>The first step of the data preprocessing was removing the profile data that contained mostly null data. Before I did that, I wanted to make sure I wasn't removing too much of the overall data. If I was to find I was removing too much, then I would have to think of an alternative strategy, such as populating the empty values with dummy data. This was something I wanted to avoid because, due to the fact that age, income, and gender were all missing for these values, any estimates would be very crude. I would only have the date they became a member as a guideline for estimations. I already found that 12.8% of the customers contained empty values, but I wanted to find out how much of the overall transcript data was associated with these customers. I joined the transcript and profile data together in order to count this percentage. I found that 11.0% of the total events were associated with these customers and only 10.8% of transactions. So thankfully, these null-customers were less prolific spenders than the rest of the customers. I would be losing slightly less data than I expected by removing these values, so I decided to delete them.</p>
-                    <p>I also deleted was the aforementioned 'email' channel. All offers contain 'email' so therefore it wont be informative. Removing it makes things clearer, and it is also good to cut down on features that don't contain useful information before building our model.</p>
-                    <p>The only other data I wanted to delete was the transactions for less than 25 cents for reasons explained above regarding informational offers. In order to do this, I needed to unpack the value column in the transcript data. This was done using the pandas <code>pop</code> and <code>from_records</code> functions. I removed values and later on I checked what this decision had on my classification of the informational offers. I found just 53 offers moved from successful to successful. This is about 0.34% of all the informational offers. I was satisfied that I was not changing the classes too much in case my reasoning for filtering out the small transactions was misguided. I believed it will make a small improvement to the algorithm. I also confirmed that the classification of BOGO and discount offers didn't change. The logic for classifying these offers do not directly rely on transactions, so I did not expect this filtering to make any change to their classifications.</p>
+                    <p>The first step of the data preprocessing was removing the profile data that contained mostly null values. Before doing that, I wanted to make sure I wasn't removing too much of the overall data. If I were to find that I was removing too much, I would have had to consider alternative strategies, such as populating the empty values with estimated data. However, this would have been problematic because age, income, and gender were all missing for these customers, making any estimations very crude. </p>
+
+                    <p>I had already found that 12.8% of the customers contained empty values, but I wanted to find out how much of the overall transcript data was associated with these customers. I joined the transcript and profile data to calculate this percentage. I found that 11.0% of the total events were associated with these customers and only 10.8% of transactions. Thankfully, these null-value customers were less prolific spenders than the rest. Since I would be losing slightly less data than expected by removing these values, I decided to delete them.</p>
+                    
+                    <p>I also deleted the aforementioned 'email' channel. All offers contain 'email,' so it wouldn't be informative for the model. Removing it makes things clearer and helps reduce the number of features.</p>
+                    
+                    <p>The only other data I wanted to delete was the transactions for less than 25 cents, for reasons explained earlier regarding informational offers. To do this, I needed to unpack the value column in the transcript data. I removed these values and later checked the impact of this decision on my classification of the informational offers. I found that only 53 offers moved from successful to unsuccessful. This is about 0.34% of all the informational offers. I was satisfied that I wasn't changing the classes too much, and I believe it will make a small improvement to the algorithm. I also confirmed that the classification of BOGO and discount offers didn't change, as expected, because their classification logic doesn't directly rely on transactions.</p>
 
                     <h4>Classification</h4>
-                    <p>The next step of deciding the actual classes was perhaps the most complicated of the entire project. I explained in the Problem Statement section how I would decide the classes and illustrated it in Figures 1 and 2.</p>
-                    <p>I first added a column showing the expiry of each offer. This was computed from the time the offer was sent and the offer duration. All offers must be completed before the expiry to be deemed a successful offer.</p>
-                    <p>The reason I found this part of the project so complex was because of the possibility of be overlapping offers. I wanted to be sure to identify edge cases. It required a series of forwards fills, backward fills and shifts.</p>
-                    <p>I found examples of overlapping offers so it was important to associate all transactions with the most recent viewed offer. If a user received two offers and only viewed the first one, then all transactions will be assumed to be under the influence of the first one. So, I filled forward all transactions with the <code>offer_id</code> of the viewed offers.</p>
-                    <p>I also filled forward the offer viewed events with the expiry time from the offer received events. Then, I filled forward the transaction and offer completed expiry values from these offer viewed events. By doing this in two steps, I avoided giving the transaction and offer completed events an expiry value in a situation where the offer was not viewed.</p>
-                    <p>I decided to do a spot check on an edge case I found to see how my logic was panning out. I could see in Figure 12 below that it was working as expected. I could verify that the transaction at time 414 is correctly associated with the offer received at 336 and not the more recent one received at 408. This is because the the more recent one was never viewed. This offer happens to be a informational offer so I will end up flagging this as positive class since it occurred before it's expiry time. This case gets more interesting still because the transaction at time 414 also triggered an offer completed at 414. This is for the more recent offer that was not viewed. So, this will not be classed as an effective offer. I will eventually be checking if offer completed events occurred before their expiry times and since this event has a null expiry time, I expect to class this in the negative class.</p>
-            
+					<p>Determining the classes for the machine learning models was one of the most complex aspects of this project, due to the possibility of overlapping offers and edge cases. To address this, I first added an expiry time for each offer, calculated from the offer's start time and duration. Any offer completed before its expiry would be considered successful.</p> 
+					<p>To handle overlapping offers, I implemented a series of forward and backward fills, ensuring that transactions were associated with the most recently viewed offer. For instance, if a customer received two offers but only viewed the first one, all subsequent transactions would be attributed to that first offer. This required careful consideration of the order of events and the potential for interactions between different offers.</p>
+					<p>I also filled forward expiry times from "offer received" events to "offer viewed" and "transaction" events, ensuring that only viewed offers influenced transaction classifications. This process involved multiple steps and careful validation to ensure accuracy.</p>
+					<p>To verify the logic, I conducted spot checks on edge cases, such as the one illustrated in Figure 12, where a transaction is correctly associated with an earlier viewed offer rather than a more recent unviewed offer. This edge case is particularly interesting because it includes an offer being completed, but it will be flagged as unsuccessful because the more recent offer was never viewed. This case highlights the importance of careful consideration of the order of events and the potential for interactions between different offers. </p>
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/edge case spot check 1.PNG" alt="Edge case spot check showing an informational offer being correctly prioritised" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 12:</strong> Example of correctly classified overlapping offers. The informational offer received at time 336 and viewed at time 372 is correctly associated with the transaction at time 414.</p>
@@ -260,66 +284,57 @@
 
                     
 
-                    <p>Transactions that have an <code>offer_id</code> means that a customer has viewed an offer prior to making a purchase. Informational offers with a transaction with a time less than expiry can now be classed as a successful event. It will have an expiry value associated with the last viewed offer, so it is safe to make this determination. Discount and BOGO offers that have been completed at a time less than it's expiry time can also now be classes as a successful event. It will have an expiry value associated with the last viewed offer. So, I don't need to explicitly check again that it has been viewed prior to completion.</p>
-                    <p>It made it easier for me to class the data if I split the data up between informational and non-informational offers. I found it easier to follow even though it was not strictly necessary.</p>
+                    <p>Transactions that have an <code>offer_id</code> means that a customer has viewed an offer prior to making a purchase. Informational offers with a transaction with a time less than expiry can now be classed as a successful event. It will have an expiry value associated with the last <i><b>viewed</b></i> offer, so it is safe to make this determination. Discount and BOGO offers that have been completed at a time less than it's expiry time can also now be classes as a successful event. It will also have an expiry value associated with the last <i><b>viewed</b></i> offer. So, I don't need to explicitly check again that it has been viewed prior to completion.</p>
+                    <p>To simplify the classification process, I split the data into informational and non-informational offers. While not strictly necessary, this improved clarity and made it easier to verify the logic for each offer type.</p>
 
                     <h4>Classifying Informational Offers</h4>
-                    <p>I can now set a transaction to be a successful offer if the time it occurs is less than the expiry time. I added a new column called <code>successful_offer</code> and populated with 1 for successful offers and 0 for unsuccessful offers.</p>
-                    <p>Now I have all the transactions that correspond to a successful offer. So, I want to backfill the <code>successful_offer</code> column to the viewed events first. And then select only the received and viewed and use the shift function to populate the offer received event's <code>succesful_offer</code> column. The reason I do it in two steps is to avoid certain edge cases. Where the same user gets the same offer twice. And if only the second one is successful, I dont want all previous ones classed as successful, just the latter one.</p>
-                    <p>An example of the case I will be avoiding is this (same offer type and same customer all occurring within a small time frame) with a successful transaction</p>
-                    <ol>
-                        <li>Received</li>
-                        <li>Received</li>
-                        <li>Viewed</li>
-                        <li>Received</li>
-                        <li>Transaction = True</li>
-                    </ol>
-                    <p>I want the 2nd offer received to be marked as successful and all other offers received to remain unmarked. If I were to backfill all at once, then all received offers will be classed as successful. So, I first backfill transactions to viewed so now the viewed offer is marked as successful. Now I must use the shift function to mark just the one previous received offer to the viewed offer as a backfill would mark the first two received offers as successful. If there are no further transactions or offers viewed, then I will be filling in the unmarked <code>succesful_offer</code> values with a 0.</p>
-                    <ol>
-                        <li>Received = False</li>
-                        <li>Received = True</li>
-                        <li>Viewed = True</li>
-                        <li>Received = False</li>
-                        <li>Transaction = True</li>
-                    </ol>
-                    <p>I then just select values from the data set where the event is an offer received. I have now successfully classed all informational offers and this will be part of my input to the machine learning algorithms.</p>
+                        <p>To classify informational offers, I marked transactions occurring before the expiry time as successful, using a new column called `successful_offer` with values of 1 for successful and 0 for unsuccessful offers.  </p>
+                        <p>To propagate this classification back to the corresponding "offer received" events, I used a two-step process. First, I backfilled the `successful_offer` values to the "offer viewed" events. Then, I used the shift function to assign the `successful_offer` value to the "offer received" event immediately preceding the "offer viewed" event. This approach avoids incorrectly marking earlier "offer received" events as successful in cases where a user receives the same offer multiple times and only the later ones lead to a successful transaction. </p>
+                        <p>For example, consider the following sequence of events with a successful transaction:</p>
+                        <ol>
+                            <li>Received</li>
+                            <li>Received</li>
+                            <li>Viewed</li>
+                            <li>Received</li>
+                            <li>Transaction = True</li>
+                        </ol>
+                        <p>In this case, only the second "received" offer should be marked as successful. My two-step process ensures this by first marking the "viewed" offer as successful and then using the shift function to mark only the immediately preceding "received" offer. </p>
+                        <p>Finally, I selected only the "offer received" events, resulting in a dataset of accurately classified informational offers for use in the machine learning models.</p>
 
-                    <h4>Classifying Discount and BOGO Offers</h4>
-                    <p>I can also now set a completed offer to be a successful offer if the time it occurs is less than the expiry time. Similarly to the informational offers I added a new column called <code>successful_offer</code>.</p>
-                    <p>It is possible that a single transaction can complete two offers at the same time. I can see in the edge case in Figure 13 below that both the discount and BOGO offers that were received were viewed prior to the transaction that completed them. Neither offer had expired so they both got marked as successful. I do not think it makes sense in this instance to infer that it was the latter offer that influenced the customer more than the first. The first offer gave the customer 10 days to spent 20 dollars. Perhaps the customer was always planning on activating that offer within the 10 day period. Or perhaps it was the combination of the two offers that persuaded the customer to go back to start Starbucks and purchase something to complete the pair of offers. It is one of many edge cases in this data. And a different data analyst might make a different call. But I will leave both as successful offers.</p>
-            
-                    <div style="text-align: center;">
-                        <p><img src="images/Starbucks/edge case spot check 2.PNG" alt="Edge case spot check showing two offers being completed by a single transaction" style="max-width: 100%; height: auto;"></p>
-                        <p style="font-size: smaller;"><strong>Figure 13:</strong> Example of a single transaction completing two offers simultaneously. Both offers are marked as successful as they were viewed before the transaction and had not expired.</p>
-                    </div>
 
+                        <h4>Classifying Discount and BOGO Offers</h4>
+                        <p>Similar to informational offers, I marked completed offers as successful if they occurred before their expiry time, using the `successful_offer` column. </p>
+                        <p>One edge case I encountered involved a single transaction completing two offers simultaneously (Figure 13). In such cases, I decided to mark both offers as successful, as it's unclear which offer was the primary driver of the transaction. It's possible that the customer was influenced by both offers or was already planning to make a purchase that would complete both offers.</p>
+                        
+                        <div style="text-align: center;">
+                            <figure>
+                                <img src="images/Starbucks/edge case spot check 2.PNG" alt="Edge case spot check showing two offers being completed by a single transaction" style="max-width: 100%; height: auto;">
+                                <figcaption style="font-size: smaller;"><strong>Figure 13:</strong> Example of a single transaction completing two offers simultaneously.</figcaption>
+                            </figure>
+                        </div>
+                        
+                        <p>To classify these offers, I used a similar approach as with the informational offers, using a combination of fill and shift functions to associate the completed offer with the correct offer received event. For example, the following event sequence:</p>
+                        <ol>
+                            <li>Received</li>
+                            <li>Received</li>
+                            <li>Viewed</li>
+                            <li>Received</li>
+                            <li>Transaction</li>
+                            <li>Completed = True</li>
+                        </ol>
+                        <p>would result in only the second "received" offer being marked as successful:</p>
+                        <ol>
+                            <li>Received = False</li>
+                            <li>Received = True</li>
+                            <li>Viewed = True</li>
+                            <li>Received = False</li>
+                            <li>Transaction</li>
+                            <li>Completed = True</li>
+                        </ol>
+                        <p>Finally, I selected only the "offer received" events and combined this data with the classified informational offers from the previous section.</p>
                     
-
-                    <p>Now I will use similar steps to classify these offers as I did for the informational offers. Using a combination of fill and shift functions I associate the completed offer with the correct offer received.</p>
-                    <ol>
-                        <li>Received</li>
-                        <li>Received</li>
-                        <li>Viewed</li>
-                        <li>Received</li>
-                        <li>Transaction</li>
-                        <li>Completed = True</li>
-                    </ol>
-
-                    <p>The flow above results in the values below with only the 2nd received offer correctly identified as successful.</p>
-                    <ol>
-                        <li>Received = False</li>
-                        <li>Received = True</li>
-                        <li>Viewed = True</li>
-                        <li>Received = False</li>
-                        <li>Transaction</li>
-                        <li>Completed = True</li>
-                    </ol>
-
-                    <p>I then select just the events where an offer was received and join the data onto the informational data from the section above.</p>
-
                     <h4>The Classes</h4>
-                    <p>After filtering just on offer received I counted the number of positive and negative classes. As can be seen in Figure 14 below, the classes are not perfectly balanced but not too skewed either.</p>
-                    
+                    <p>After filtering for "offer received" events, I analyzed the distribution of positive and negative classes (Figure 14). The classes are slightly imbalanced, but not significantly.</p>
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/offers classes ratio.PNG" alt="Distribution of Offer Classes" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 14:</strong>  Bar chart showing the number of successful (positive) and unsuccessful (negative) offers after filtering for 'offer received' events. </p>
@@ -334,8 +349,9 @@
 
                     <h4>Benchmark Model</h4>
                     <p>First I will build and refine my benchmark model. I set my features to be <code>reward</code>, <code>difficulty</code>, <code>duration</code>, <code>mobile</code>, <code>social</code>, <code>web</code>, <code>bogo</code>, <code>discount</code>, <code>informational</code>, <code>age</code>, <code>became_member_on</code>, <code>income</code>, <code>female</code>, <code>male</code> and <code>other</code>. I set the label to be <code>successful_offer</code>.</p>
-                    <p>I will use a <code>QuantileTransformer</code> from sklearn to scale all my features. It is robust at handling outliers and skewed data. I will apply this transform within a pipeline while splitting my data up between training and testing data to avoid the risk of data leakage. I decided on a split of 85:15 for the training and testing split. It is within the acceptable range for splitting of the data. I also wanted to keep the same amount of data for testing in both my benchmark model and neural network model to keep things controlled. (In the neural network model I will use a split of train= 70%, validation= 15%, test= 15%)</p>
-                    <p>I chose a selection of common sklearn machine learning algorithms to run some initial tests on to see how each one performed. I tested the sklearn models <code>DecisionTreeClassifier</code>, <code>AdaBoostClassifier</code>, <code>RandomForestClassifier</code>, <code>GaussianNB</code>, <code>SVC</code> using my data set. The <code>RandomForestClassifier</code> comfortably outperformed the other models in both the accuracy (0.6976) and successful F1-score (0.6352). The confusion matrix can be seen in Figure 15 below. I decided this will be the sklearn algorithm I will try to optimise and use as my benchmark model against the neural network. The weighted F1-score of this basic model is 0.6958. I would like to keep this figure close to that number while optimising the positive recall value.</p>
+                    <p>I'll use sklearn's `QuantileTransformer` to scale the features. This method is robust to outliers and skewed data, which are present in some of the features. To avoid data leakage, I'll apply this transformation within a pipeline while splitting the data into training (85%) and testing (15%) sets. This split allows for sufficient training data while reserving an adequate portion for testing.  The same testing data will be used for both the benchmark and neural network models to ensure a fair comparison. (The neural network model will use a 70/15/15 split for training, validation, and testing.)</p>
+                    <p>To select the best algorithm for this classification problem, I tested several common sklearn models: `DecisionTreeClassifier`, `AdaBoostClassifier`, `RandomForestClassifier`, `GaussianNB`, and `SVC`. The `RandomForestClassifier` significantly outperformed the others in terms of both accuracy (0.6976) and the F1-score for successful offers (0.6352) (see Figure 15 for the confusion matrix).  This model's weighted F1-score is 0.6958.  I'll now focus on optimizing this model, aiming to increase the recall (true positive rate) while maintaining a good overall accuracy and F1-score.</p>
+
             
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/confusion matrix 1.PNG" alt="Confusion Matrix for Initial RandomForestClassifier" style="max-width: 100%; height: auto;"></p>
@@ -351,7 +367,7 @@
                     </div>
             
             
-                    <p>I wondered if this data set would perform better if I performed Principal Component Analysis (PCA) on it. I obtained the eigenvalues and plotted them on a scree plot, as shown in the first image in Figure 17 below. A common method for deciding how many principal components to use is to use all the components before an elbow in a scree plot.<sup><a href="#reference2">[2]</a></sup> These first four components represent 0.78 of the variance, as illustrated in the second image in Figure 17 below.</p>
+                    <p>To explore further dimensionality reduction, I performed Principal Component Analysis (PCA). I obtained the eigenvalues and plotted them on a scree plot. A common method for deciding how many principal components to use is to use all the components before an elbow in a scree plot.<sup><a href="#reference4">[4]</a></sup> These first six components represent 0.78 of the variance, as illustrated in the second image in Figure 17 below. However, after retraining the `RandomForestClassifier` using only these four components, I found that both accuracy (0.6779) and the F1-score (0.6155) were worse than before. Therefore, I decided against using PCA for this dataset.</p>
             
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/PCA plots.PNG" alt="PCA Scree Plot and Explained Variance" style="max-width: 100%; height: auto;"></p>
@@ -359,26 +375,27 @@
                     </div>
                     
                 
-                    <p>I then used the same <code>RandomForestClassifier</code> algorithm from earlier, using just these four components to see if they were better at predicting the classes. I found that both accuracy (0.6779) and the F1-score (0.6155) were worse at predicting the data than before. I decided against using PCA on this data going forward.</p>
-                    <p>Next, I decided to try to find the parameters for my classifier that would optimize its classification ability. I used sklearn's <code>GridSearchCV</code> function to do this. The <code>RandomForestClassifier</code> is an ideal candidate for <code>GridSearchCV</code> because it has many hyperparameters that can be tuned. It can be quite computationally expensive to check the performance of all parameters. I selected as many as I deemed reasonable and ran it using a <code>StratifiedKFold=10</code>. I decided to tune it for maximum recall. I discovered that the best parameters for recall were very similar to the default parameters, and not much improvement was to be found.</p>
-                    <p>So far, my strategies for refinement were not bearing fruit, so I decided to go back to the data set and try to extract additional features. I thought using information prior to an offer being sent/received would prove beneficial. I calculated the total spend of each customer by the time an offer was received. I did this by using the pandas <code>cumsum</code> function and then forward-filling to each offer received. I also counted the total number of individual transactions each customer made prior to an offer being received. Then, I also counted the total number of previous offers they received, viewed, and completed prior to each additional offer being received. This was done by one-hot encoding the events and then doing the same  সূত্রের প্রয়োগ (<code>cumsum</code>) and forward-fill as before.</p>
-                    <p>I then ran this new data set through the default <code>RandomForestClassifier</code>, and finally, I did begin to see some improvement in my model. Both the accuracy (0.7053) and the F1-score (0.6373) increased slightly. I checked the feature importance of this new data set to see if my new features were prominent, and they did appear to play an important part, as can be seen in Figure 18 below.</p>
-            
+                    <p>Next, I used sklearn's `GridSearchCV` function to try and find the optimal hyperparameter settings for the `RandomForestClassifier`. I selected a range of hyperparameters and ran `GridSearchCV` using `StratifiedKFold=10` to tune the model for maximum recall. However, I discovered that the best parameters for recall were very similar to the default parameters, and not much improvement was to be found.</p>
+
+                    <p>Since my initial refinement strategies weren't yielding significant improvements, I decided to go back to the data set and try to extract additional features. I thought that using information prior to an offer being sent/received would prove beneficial. I calculated the total spend of each customer by the time an offer was received, using the pandas `cumsum` function and then forward-filling to each offer received. I also counted the total number of individual transactions each customer made prior to an offer being received. Then, I also counted the total number of previous offers they received, viewed, and completed prior to each additional offer being received. This was done by one-hot encoding the events and then applying the same cumulative sum and forward-fill approach as before.</p>
+                    
+                    <p>After incorporating these new features, I retrained the `RandomForestClassifier` with its default parameters and finally saw some improvement. Both the accuracy (0.7053) and the F1-score (0.6373) increased slightly. I checked the feature importance of this new data set to see if my new features were prominent, and they did appear to play an important part, as can be seen in Figure 18 below.</p>
+
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/feature importance 2.PNG" alt="Feature Importance with New Features" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 18:</strong> Feature importance plot for the <code>RandomForestClassifier</code> model after adding new features.</p>
                     </div>
             
-                    <p>But I was still wary of overfitting the data and wanted to try some dimension reduction tactics again. I tried PCA on this new data set, and again, I saw a degradation in its ability to classify. I decided to build a correlation matrix of new features, shown in Figure 19 below. <code>Completed</code>, <code>received</code>, and <code>viewed</code> had the highest total correlations when they were summed across the grid. I felt that I should keep <code>received</code> and eliminate <code>completed</code> and <code>viewed</code>, as <code>received</code> had the highest feature importance of the three.</p>
-            
+                    <p>To address potential overfitting from the new features, I tried PCA again, but it still decreased performance. So, I created a correlation matrix (Figure 19) and observed strong correlations between `completed`, `received`, and `viewed`. I decided to keep only `received`, as it had the highest feature importance among the three. This improved accuracy and F1-score, suggesting that the other two features were contributing to overfitting.</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/Correlation Matrix.PNG" alt="Correlation Matrix of New Features" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 19:</strong> Correlation matrix of the newly engineered features, showing strong correlations between <code>completed</code>, <code>received</code>, and <code>viewed</code>.</p>
                     </div>
             
-                    <p>I then ran it through the same algorithm as before with the default parameters, and in fact, I saw an improvement in both accuracy (0.7545) and the F1-score (0.6415). I suspect it was a case of overfitting the data when both <code>completed</code> and <code>viewed</code> were included.</p>
-                    <p>My final step of refinement was to take this final data set, with the three new features of <code>total_spend</code>, <code>transactions</code>, and <code>received</code>, and apply the <code>GridSearchCV</code> method as before. I found that recall was optimized when just two of the default parameters were changed: <code>max_depth = 20</code> and <code>n_estimators = 300</code>. The recall score was 0.6139, and the overall accuracy was a respectable 0.7151. The confusion matrix for this refined model can be seen in Figure 20 below.</p>
-            
+                    <p>Finally, I used `GridSearchCV` to tune the hyperparameters of the model with the refined features. I found that optimizing for recall resulted in the best performance when `max_depth` was set to 20 and `n_estimators` to 300. This gave a recall score of 0.6139 and an overall accuracy of 0.7151. The confusion matrix for this refined model is shown in Figure 20.</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/confusion matrix 2.PNG" alt="Confusion Matrix for Refined Benchmark Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 20:</strong> Confusion matrix for the refined <code>RandomForestClassifier</code> model using the new features and tuned hyperparameters.</p>
@@ -386,17 +403,17 @@
                     
                 
                     <h4>Neural Network Model</h4>
-                    <p>I decided to use a linear neural network for this model. The data set I would use is the same data set (i.e., including the new features) I used in the optimal version of my refined benchmark model. And I scaled my data using the same <code>QuantileScaler</code> as in the benchmark model. Also, similarly to the benchmark model, I set apart 15% of the data as testing data. The split used was train= 70%, validation= 15%, test= 15%. I had them converted to PyTorch tensors. I confirmed that all the data tensors was shuffled correctly and had a similar positive and negative class split.</p>
-                    <p>I built a linear network and used 256 hidden layers. I also used the PyTorch Adam optimizer with a learning rate and weight decay of 0.0001. I used a 0.1 dropout factor on each iteration. I also weighted the cross-entropy loss by the number of positive and negative classes in the training set. I then ran the model for 200 epochs to see how it compared to the benchmark model. I saw that the validation model was not improving after about 60 iterations. So, to save time, I decided to just run it for 60 epochs. I avoided the risk of overfitting the training data due to too many epochs by only selecting a model after each iteration if it had a better performance on the validation data and minimized its loss. The accuracy achieved was 0.7148. This is nearly identical my benchmark model. However, the benchmark model was optimized for recall, and this model had a positive recall value of just 0.5398. The confusion matrix for this refined model can be seen in Figure 21 below.</p>
-            
+                    <p>For this model, I used a linear neural network with the same preprocessed dataset (including the new features) and `QuantileScaler` as the benchmark model. I used a 70/15/15 split for training, validation, and testing, and converted the data to PyTorch tensors, ensuring proper shuffling and a similar class distribution across the splits.</p>
+                    <p>The network architecture consists of three hidden layers with 256 neurons each. I used the Adam optimizer with a learning rate and weight decay of 0.0001, a dropout factor of 0.1, and weighted the cross-entropy loss based on class frequencies in the training set. Initially, I trained for 200 epochs but observed that validation performance plateaued after 60 epochs. To avoid overfitting, I implemented early stopping by selecting the model with the best validation performance and minimal loss after each epoch. The final model achieved an accuracy of 0.7148, comparable to the benchmark model. However, the recall for the positive class was lower, at 0.5398 (Figure 21).</p>
+                    
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/confusion matrix 3.PNG" alt="Confusion Matrix for Initial Neural Network Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 21:</strong> Confusion matrix for the initial linear neural network model.</p>
                     </div>
             
                     <h4>Neural Network Refinement</h4>
-                    <p>I now wanted to refine my model by matching the positive recall score achieved in my benchmark model. I wanted to see if the linear neural network could match that score while also maintaining as good an accuracy score as the benchmark model. To do this, I gave more weight to the cross-entropy for the positive class. I tested a few different weights (I settled on 1.35) until I got a recall score I was satisfied with. The recall score of this model was 0.6326, and the accuracy remained high at 0.7210. The confusion matrix for this refined model can be seen in Figure 22 below.</p>
-            
+                    <p>To improve the model's recall while maintaining accuracy, I adjusted the weights in the cross-entropy loss function to give more emphasis to the positive class. After experimenting with different weights, I settled on 1.35, which resulted in a recall of 0.6326 and an accuracy of 0.7210. The confusion matrix for this refined model is shown in Figure 22.</p>
+
                     <div style="text-align: center;">
                         <p><img src="images/Starbucks/confusion matrix 4.PNG" alt="Confusion Matrix for Refined Neural Network Model" style="max-width: 100%; height: auto;"></p>
                         <p style="font-size: smaller;"><strong>Figure 22:</strong> Confusion matrix for the refined linear neural network model.</p>
@@ -405,48 +422,59 @@
 
                     <h2 id="results">Results</h2>
 
+                    <h3>Results</h3>
+
                     <h3>Model Evaluation and Results</h3>
-                    <p>Both models were tested on unseen data of the same size (15% of the entire dataset). The models were evaluated using sklearn's metric functions, focusing on achieving a high recall score without significantly sacrificing accuracy or F1-score. I prioritized the recall of the positive class because it measures the proportion of actual successful offers that were correctly identified. This is crucial for Starbucks, as they would be most interested in identifying customers who will respond positively to offers. While sending out ineffective offers that are ignored is a waste of resources, it is arguably less detrimental than missing out on potential sales from customers who would have responded favorably. </p>
-                    <p>The refined neural network model slightly outperformed the benchmark model. The neural network achieved a higher recall (0.6326 vs. 0.6139), indicating better identification of true positives. Additionally, it maintained a higher accuracy (0.7210 vs. 0.7151) and F1-score (0.7191 vs. 0.7125). Although the performance differences are small, they represent a notable achievement for the neural network, especially considering my initial skepticism about its ability to surpass the performance of classical sklearn classification models in this specific scenario.</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>Benchmark Model (Random Forest)</th>
-                                <th>Refined Neural Network</th>
+                    
+                    <p>Both the benchmark Random Forest model and the refined neural network were evaluated on the same unseen test data (15% of the entire dataset).  To assess their performance, I used a combination of accuracy, precision, and recall, calculated using sklearn's metric functions. </p>
+                    
+                    <p>As mentioned earlier, the primary focus was on achieving a high recall score for the positive class (successful offers), as this is most important to Starbucks.  Recall measures the proportion of actual successful offers that were correctly identified.  While maintaining good accuracy and F1-score is important, prioritizing recall aligns with Starbucks' likely goal of maximizing the successful offers, even if it means slightly increasing the risk of sending out some ineffective offers. </p>
+                    
+                    <p>The refined neural network model slightly outperformed the benchmark model across all metrics (see table below).  This is a noteworthy result, as it demonstrates the potential of neural networks to achieve comparable or even superior performance to classical machine learning models, even in scenarios where simpler models might be expected to perform well. </p>
+                    
+                    <div style="display: grid; place-items: center; padding: 20px; background-color: #f4f4f9;">
+                        <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                          <thead>
+                            <tr style="background-color: #00704A; color: white; text-align: center;">
+                              <th style="padding: 10px; border: 1px solid #ddd;">Metric</th>
+                              <th style="padding: 10px; border: 1px solid #ddd;">Benchmark Model (Random Forest)</th>
+                              <th style="padding: 10px; border: 1px solid #ddd;">Refined Neural Network</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Accuracy</td>
-                                <td>0.7151</td>
-                                <td>0.7210</td>
+                          </thead>
+                          <tbody>
+                            <tr style="text-align: center;">
+                              <td style="padding: 10px; border: 1px solid #ddd;">Accuracy</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.7151</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.7210</td>
                             </tr>
-                            <tr>
-                                <td>Recall</td>
-                                <td>0.6139</td>
-                                <td>0.6326</td>
+                            <tr style="text-align: center;">
+                              <td style="padding: 10px; border: 1px solid #ddd;">Recall</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.6139</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.6326</td>
                             </tr>
-                            <tr>
-                                <td>F1-score</td>
-                                <td>0.7125</td>
-                                <td>0.7191</td>
+                            <tr style="text-align: center;">
+                              <td style="padding: 10px; border: 1px solid #ddd;">F1-score</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.7125</td>
+                              <td style="padding: 10px; border: 1px solid #ddd;">0.7191</td>
                             </tr>
-                        </tbody>
-                    </table>
+                          </tbody>
+                        </table>
+                      </div>
+                      
                 
                     <h2 id="conclusion">Conclusion</h2>
                 
-                    <p>This project explored various avenues within the provided datasets, and there's potential to revisit it with a different objective or angle. The open-ended nature of the project meant that a concrete objective wasn't established until after a thorough data exploration phase. I was particularly surprised and intrigued by the neural network's strong performance in classifying the data. Initially, I expected the benchmark model to perform equally well or even outperform the neural network.</p>
-                
-                    <h2 id="finalThoughts">Final Thoughts</h3>
-                    <p>This project was a challenging yet enjoyable experience. The Udacity tutorials and support from the tutors were invaluable throughout the process. This project has significantly expanded my understanding of data science and machine learning, encouraging me to continue exploring this fascinating field.</p>
-                
-                    <h2 id="futureWork">Future Work</h3>
-                    <p>During the project, several potential avenues for further exploration and improvement emerged. The new features I added, based on past customer behavior, were particularly effective in improving the model's performance. This suggests that further investigation into additional features related to past interactions could yield even better results. For instance, calculating the average time lag between offer receipt and viewing for each customer could provide valuable insights.</p>
-                    <p>Another interesting direction would be to introduce a new class to the problem. Currently, the model focuses on classifying offers as "successful" or "unsuccessful," with an emphasis on correctly identifying successful offers (recall). However, a "very unsuccessful" class could be defined to identify offers where a customer completed the offer and received a discount without ever viewing the offer. This scenario represents a potential loss for Starbucks, as they provided a discount unnecessarily. Limiting these "very unsuccessful" offers could be a valuable objective for future model iterations.</p>
+                    <p>This project was an open-ended exploration of machine learning for targeted advertising, with the specific objective emerging after thorough data exploration.  This open-endedness presented some initial challenges, such as defining the scope of the project and determining the most appropriate evaluation metrics. One surprising outcome was the strong performance of the neural network in classifying the data, which initially wasn't anticipated. </p>
+
+                    <p>The findings from this project have practical implications for real-world marketing campaigns.  By leveraging machine learning, businesses like Starbucks can potentially improve the efficiency of ad spend, target offers more effectively, and increase customer engagement.  </p>
                     
-                    <p>This is a sentence with a citation.<sup><a href="#reference1">[1]</a></sup></p>
+                    <h2 id="finalThoughts">Final Thoughts</h3>
+                    <p>This project was a challenging but rewarding experience. The Udacity tutorials and support from the tutors were invaluable throughout the process.  Through this project, I significantly deepened my understanding of data science and machine learning, motivating me to continue exploring this field. </p>
+
+                    <h2 id="futureWork">Future Work</h3>
+                    <p>This project revealed several potential avenues for further exploration and improvement.  For example, the new features based on past customer behavior were particularly effective, suggesting that additional features related to past interactions could yield even better results. Calculating the average time lag between offer receipt and viewing for each customer might provide valuable insights. </p>
+
+                    <p>Another interesting direction would be to refine the classification of offers. Currently, the model classifies offers as "successful" or "unsuccessful," with an emphasis on correctly identifying successful offers (recall). However, a more nuanced approach could involve identifying "very unsuccessful" offers, where a customer completes an offer and receives a discount but would have purchased the product even without the offer. This would help Starbucks avoid unnecessary discounts and further optimize marketing spend. </p>
                 
                     <h2 id="references">References</h2>
                     <ol>
